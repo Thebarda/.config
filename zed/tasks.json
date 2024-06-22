@@ -1,0 +1,37 @@
+// Static tasks configuration.
+//
+// Example:
+[
+  {
+    "label": "Lazygit",
+    "command": "lazygit",
+    "args": [],
+    "env": {},
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "Lint",
+    "command": "lint",
+    "args": [],
+    "env": {},
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "Cypress open",
+    "command": "pn cypress:ui",
+    "args": [],
+    "env": {},
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  },
+  {
+    "label": "Cypress open",
+    "command": "pn cypress:run",
+    "args": ["--spec", "$ZED_FILE"],
+    "env": {},
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false
+  }
+]
