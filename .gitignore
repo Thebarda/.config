@@ -1,2 +1,5 @@
 configstore/
 iterm2
+zed/.tmp*
+zed/embeddings
+zed/prompts
