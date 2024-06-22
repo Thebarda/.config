@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -101,6 +101,7 @@ require('lazy').setup {
       },
     },
   },
+  { 'nvim-lua/plenary.nvim', enabled = true },
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -569,6 +570,10 @@ require('lazy').setup {
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
+    after = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
