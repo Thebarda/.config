@@ -88,8 +88,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  { 'numToStr/Comment.nvim',    opts = {} },
-  {                   -- Adds git related signs to the gutter, as well as utilities for managing changes
+  { 'numToStr/Comment.nvim', opts = {} },
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -101,7 +101,7 @@ require('lazy').setup {
       },
     },
   },
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -119,7 +119,6 @@ require('lazy').setup {
       }
     end,
   },
-
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -142,7 +141,7 @@ require('lazy').setup {
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       require('telescope').setup {
@@ -180,6 +179,9 @@ require('lazy').setup {
     end,
   },
   {
+    'nvim-telescope/telescope-project.nvim',
+  },
+  {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
@@ -194,11 +196,11 @@ require('lazy').setup {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim',       opts = {} },
+      { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -481,25 +483,24 @@ require('lazy').setup {
       }
     end,
   },
-
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
-
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -572,7 +573,7 @@ require('lazy').setup {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
       {
         's1n7ax/nvim-window-picker',
         version = '2.*',
@@ -601,13 +602,18 @@ require('lazy').setup {
       vim.fn.sign_define('DiagnosticSignHint', { text = '??', texthl = 'DiagnosticSignHint' })
 
       require('neo-tree').setup {
+        sources = {
+          'filesystem',
+          'document_symbols',
+          'git_status',
+        },
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = 'rounded',
         enable_git_status = true,
         enable_diagnostics = true,
         open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
-        sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
-        sort_function = nil,                                               -- use a custom function for sorting files and directories in the tree
+        sort_case_insensitive = false, -- used when sorting files and directories in the tree
+        sort_function = nil, -- use a custom function for sorting files and directories in the tree
         default_component_configs = {
           container = {
             enable_character_fade = true,
@@ -617,8 +623,8 @@ require('lazy').setup {
             padding = 1, -- extra padding on left hand side
             -- indent guides
             with_markers = true,
-            indent_marker = '?',
-            last_indent_marker = '?',
+            indent_marker = '-',
+            last_indent_marker = '-',
             highlight = 'NeoTreeIndentMarker',
             -- expander config, needed for nesting files
             with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
@@ -626,7 +632,15 @@ require('lazy').setup {
             expander_expanded = '?',
             expander_highlight = 'NeoTreeExpander',
           },
-
+          icon = {
+            folder_closed = '',
+            folder_open = '',
+            folder_empty = '󰜌',
+            -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
+            -- then these will never be used.
+            default = '*',
+            highlight = 'NeoTreeFileIcon',
+          },
           modified = {
             symbol = '[+]',
             highlight = 'NeoTreeModified',
@@ -639,9 +653,9 @@ require('lazy').setup {
           git_status = {
             symbols = {
               -- Change type
-              added = '',     -- or "?", but this is redundant info if you use git_status_colors on the name
-              modified = '',  -- or "?", but this is redundant info if you use git_status_colors on the name
-              deleted = '?',  -- this can only be used in the git_status source
+              added = '+', -- or "?", but this is redundant info if you use git_status_colors on the name
+              modified = '~', -- or "?", but this is redundant info if you use git_status_colors on the name
+              deleted = '-', -- this can only be used in the git_status source
               renamed = '??', -- this can only be used in the git_status source
               -- Status type
               untracked = '?',
@@ -763,11 +777,11 @@ require('lazy').setup {
             },
           },
           follow_current_file = {
-            enabled = true,                       -- This will find and focus the file in the active buffer every time
+            enabled = true, -- This will find and focus the file in the active buffer every time
             --               -- the current file is changed while the tree is open.
-            leave_dirs_open = false,              -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
           },
-          group_empty_dirs = false,               -- when true, empty folders will be grouped together
+          group_empty_dirs = false, -- when true, empty folders will be grouped together
           hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
           -- in whatever position is specified in window.position
           -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -811,11 +825,11 @@ require('lazy').setup {
         },
         buffers = {
           follow_current_file = {
-            enabled = true,          -- This will find and focus the file in the active buffer every time
+            enabled = true, -- This will find and focus the file in the active buffer every time
             --              -- the current file is changed while the tree is open.
             leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
           },
-          group_empty_dirs = true,   -- when true, empty folders will be grouped together
+          group_empty_dirs = true, -- when true, empty folders will be grouped together
           show_unloaded = true,
         },
         git_status = {
@@ -830,5 +844,6 @@ require('lazy').setup {
   },
 }
 
+require('telescope').load_extension 'project'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
