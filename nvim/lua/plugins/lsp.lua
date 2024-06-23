@@ -7,7 +7,7 @@ return { -- LSP Configuration & Plugins
       'williamboman/mason-lspconfig.nvim',
       config = function()
         require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", "vtsls", "eslint_d", "biome", "intelephense", "html-lsp", "json-lsp" },
+          ensure_installed = { "lua_ls", "vtsls", "biome", "intelephense" },
         }
       end
     },
