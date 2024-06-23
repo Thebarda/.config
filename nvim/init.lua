@@ -1,6 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.opt.shell = '/bin/bash'
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -58,6 +60,8 @@ vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -110,8 +114,12 @@ require('lazy').setup {
   require 'plugins.neotree',
   require 'plugins.transparent',
   require 'plugins.dashboard',
+  require 'plugins.bufferline',
+  require 'plugins.spectre',
+  require 'plugins.lazygit'
 }
 
 require 'autocmds'
+require 'keymaps'
 
 require('telescope').load_extension 'project'
