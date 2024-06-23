@@ -52,5 +52,13 @@ return { -- Collection of various small independent plugins/modules
         }),
       }
     })
+
+    require('mini.cursorword').setup()
+    require('mini.sessions').setup({
+      autoread = true,
+      autowrite = true
+    })
+    local notify = require('mini.notify')
+    notify.setup()
   end,
 }
