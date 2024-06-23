@@ -32,10 +32,10 @@ return {
   },
   config = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-    vim.fn.sign_define('DiagnosticSignError', { text = '? ', texthl = 'DiagnosticSignError' })
-    vim.fn.sign_define('DiagnosticSignWarn', { text = '? ', texthl = 'DiagnosticSignWarn' })
-    vim.fn.sign_define('DiagnosticSignInfo', { text = '? ', texthl = 'DiagnosticSignInfo' })
-    vim.fn.sign_define('DiagnosticSignHint', { text = '??', texthl = 'DiagnosticSignHint' })
+    vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
+    vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
+    vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
+    vim.fn.sign_define('DiagnosticSignHint', { text = '󰴓 ', texthl = 'DiagnosticSignHint' })
 
     require('neo-tree').setup {
       sources = { "filesystem", "buffers", "git_status" },
@@ -91,11 +91,11 @@ return {
             deleted = '-',  -- this can only be used in the git_status source
             renamed = '??', -- this can only be used in the git_status source
             -- Status type
-            untracked = '?',
-            ignored = '?',
-            unstaged = '??',
-            staged = '?',
-            conflict = '?',
+            untracked = 'U',
+            ignored = 'I',
+            unstaged = 'U',
+            staged = 'S',
+            conflict = 'C',
           },
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
