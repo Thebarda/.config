@@ -37,24 +37,35 @@ return { -- LSP Configuration & Plugins
         -- In this case, we create a function that lets us more easily define mappings specific
         -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc)
-          vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+          vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc, })
         end
+
+        require('which-key').register({
+          L = {
+            name = 'Code Actions',
+            d = { require('telescope.builtin').lsp_definitions, 'Goto Definition' },
+            i = { require('telescope.builtin').lsp_implementations, 'Goto Implementation' },
+            r = { vim.lsp.buf.rename, 'Rename' }
+          }
+        }, {
+          prefix = '<leader>'
+        })
 
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
-        -- map('<leader>cd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        --[[ map('<leader>cd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition') ]]
 
         -- Find references for the word under your cursor.
         -- map('<leader>cr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
-        -- map('<leaderc>I', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        --[[ map('<leader>ci', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation') ]]
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        -- map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        --[[ map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame') ]]
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.

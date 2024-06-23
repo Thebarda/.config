@@ -2,6 +2,8 @@ vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
   desc = "Toggle Spectre"
 })
 
+vim.keymap.set('n', '<leader>P', '<cmd>Telescope project<CR>', { desc = 'Telescope project' });
+
 vim.keymap.set('n', ';', function()
   vim.ui.input({ prompt = 'Type Vim command' }, function(text)
     if text == nil then
@@ -31,7 +33,7 @@ vim.keymap.set('n', '<leader>T', function()
   table.insert(options, "Add")
 
   vim.ui.select(options, {
-    prompt = 'Select Centreon directory'
+    prompt = 'Select a directory'
   }, function(item)
     if item == 'Add' then
       vim.ui.input({ prompt = "Type the absolute path to directory" }, function(directoryPath)
