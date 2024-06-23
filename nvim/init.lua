@@ -103,6 +103,7 @@ require('lazy').setup {
   require 'plugins.telescope-project',
   require 'plugins.tstools',
   require 'plugins.lsp',
+  require 'plugins.lsp-signature',
   require 'plugins.conform',
   require 'plugins.cmp',
   require 'plugins.gruvbox',
@@ -117,7 +118,8 @@ require('lazy').setup {
   require 'plugins.dashboard',
   require 'plugins.bufferline',
   require 'plugins.spectre',
-  require 'plugins.lazygit'
+  require 'plugins.lazygit',
+  require 'plugins.toggleterm'
 }
 
 require 'autocmds'
