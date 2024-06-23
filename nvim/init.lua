@@ -119,7 +119,7 @@ require('lazy').setup {
   require 'plugins.bufferline',
   require 'plugins.spectre',
   require 'plugins.lazygit',
-  require 'plugins.toggleterm'
+  require 'plugins.toggleterm',
 }
 
 require 'autocmds'
