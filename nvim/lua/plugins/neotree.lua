@@ -9,7 +9,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
-    '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
+    '3rd/image.nvim',              -- Optional image support in preview window: See `# Preview Mode` for more information
     {
       's1n7ax/nvim-window-picker',
       version = '2.*',
@@ -38,18 +38,14 @@ return {
     vim.fn.sign_define('DiagnosticSignHint', { text = '??', texthl = 'DiagnosticSignHint' })
 
     require('neo-tree').setup {
-      sources = {
-        'filesystem',
-        'document_symbols',
-        'git_status',
-      },
+      sources = { "filesystem", "buffers", "git_status" },
+      open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = true,
-      open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
       sort_case_insensitive = false, -- used when sorting files and directories in the tree
-      sort_function = nil, -- use a custom function for sorting files and directories in the tree
+      sort_function = nil,           -- use a custom function for sorting files and directories in the tree
       default_component_configs = {
         container = {
           enable_character_fade = true,
@@ -90,9 +86,9 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = '+', -- or "?", but this is redundant info if you use git_status_colors on the name
+            added = '+',    -- or "?", but this is redundant info if you use git_status_colors on the name
             modified = '~', -- or "?", but this is redundant info if you use git_status_colors on the name
-            deleted = '-', -- this can only be used in the git_status source
+            deleted = '-',  -- this can only be used in the git_status source
             renamed = '??', -- this can only be used in the git_status source
             -- Status type
             untracked = '?',
@@ -213,12 +209,12 @@ return {
             --".null-ls_*",
           },
         },
-        follow_current_file = {
-          enabled = true, -- This will find and focus the file in the active buffer every time
-          --               -- the current file is changed while the tree is open.
-          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        filesystem = {
+          bind_to_cwd = false,
+          follow_current_file = { enabled = true },
+          use_libuv_file_watcher = true,
         },
-        group_empty_dirs = false, -- when true, empty folders will be grouped together
+        group_empty_dirs = false,               -- when true, empty folders will be grouped together
         hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
         -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -259,15 +255,6 @@ return {
         },
 
         commands = {}, -- Add a custom command or override a global one using the same function name
-      },
-      buffers = {
-        follow_current_file = {
-          enabled = true, -- This will find and focus the file in the active buffer every time
-          --              -- the current file is changed while the tree is open.
-          leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
-        },
-        group_empty_dirs = true, -- when true, empty folders will be grouped together
-        show_unloaded = true,
       },
       git_status = {
         window = {
