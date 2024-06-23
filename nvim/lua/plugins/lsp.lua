@@ -3,16 +3,29 @@ return { -- LSP Configuration & Plugins
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-    'williamboman/mason-lspconfig.nvim',
+    {
+      'williamboman/mason-lspconfig.nvim',
+      config = function()
+        require("mason-lspconfig").setup {
+          ensure_installed = { "lua_ls", "vtsls", "eslint_d", "biome", "intelephense", "html-lsp", "json-lsp" },
+        }
+      end
+    },
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim',       opts = {} },
+    {
+      'j-hui/fidget.nvim',
+      opts = {}
+    },
 
     -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
-    { 'folke/neodev.nvim',       opts = {} },
+    {
+      'folke/neodev.nvim',
+      opts = {}
+    },
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -100,7 +113,7 @@ return { -- LSP Configuration & Plugins
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     local servers = {
-      tsserver = {},
+      vtsls = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},

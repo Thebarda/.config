@@ -101,7 +101,6 @@ require('lazy').setup {
   require 'plugins.whichkey',
   require 'plugins.telescope',
   require 'plugins.telescope-project',
-  require 'plugins.tstools',
   require 'plugins.lsp',
   require 'plugins.lsp-signature',
   require 'plugins.conform',
