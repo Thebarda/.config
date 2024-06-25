@@ -30,50 +30,52 @@ return { -- Collection of various small independent plugins/modules
       return '%2l:%-2v'
     end
 
-    local animate = require('mini.animate')
-    animate.setup({
+    local animate = require 'mini.animate'
+    animate.setup {
       close = {
-        enable = false
+        enable = false,
       },
       open = {
-        enable = false
+        enable = false,
       },
       resize = {
-        enable = false
+        enable = false,
       },
       scroll = {
-        enable = false
+        enable = false,
       },
       cursor = {
         enable = true,
-        timing = animate.gen_timing.linear({ duration = 130, unit = 'total' }),
-        path = animate.gen_path.line({
-          predicate = function() return true end,
-        }),
-      }
-    })
+        timing = animate.gen_timing.linear { duration = 130, unit = 'total' },
+        path = animate.gen_path.line {
+          predicate = function()
+            return true
+          end,
+        },
+      },
+    }
 
     require('mini.cursorword').setup()
-    require('mini.sessions').setup({
+    require('mini.sessions').setup {
       autoread = true,
-      autowrite = true
-    })
-    local notify = require('mini.notify')
+      autowrite = true,
+    }
+    local notify = require 'mini.notify'
     notify.setup()
-    require('mini.move').setup({
+    require('mini.move').setup {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-        left = '<C-Left>',
-        right = '<C-Right>',
-        down = '<C-Down>',
-        up = '<C-Up>',
+        left = '<S-j>',
+        right = '<S-l>',
+        down = '<C-k>',
+        up = '<C-i>',
 
         -- Move current line in Normal mode
-        line_left = '<C-Left>',
-        line_right = '<C-Right>',
-        line_down = '<C-Down>',
-        line_up = '<C-Up>',
+        line_left = '<S-j>',
+        line_right = '<S-l>',
+        line_down = '<S-k>',
+        line_up = '<S-i>',
       },
-    })
+    }
   end,
 }

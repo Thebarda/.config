@@ -62,6 +62,10 @@ vim.opt.hlsearch = true
 vim.opt.termguicolors = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.expandtab = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -94,6 +98,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   require 'plugins.tabstop',
   require 'plugins.comment',
+  require 'plugins.image',
   require 'plugins.window-picker',
   require 'plugins.dressing',
   require 'plugins.gitsigns',
@@ -119,6 +124,7 @@ require('lazy').setup {
   require 'plugins.spectre',
   require 'plugins.lazygit',
   require 'plugins.toggleterm',
+  require 'plugins.lspsaga',
 }
 
 require 'autocmds'
