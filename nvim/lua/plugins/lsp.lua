@@ -6,10 +6,10 @@ return { -- LSP Configuration & Plugins
     {
       'williamboman/mason-lspconfig.nvim',
       config = function()
-        require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", "vtsls", "biome", "intelephense" },
+        require('mason-lspconfig').setup {
+          ensure_installed = { 'lua_ls', 'vtsls', 'biome', 'intelephense' },
         }
-      end
+      end,
     },
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -17,14 +17,14 @@ return { -- LSP Configuration & Plugins
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     {
       'j-hui/fidget.nvim',
-      opts = {}
+      opts = {},
     },
 
     -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     {
       'folke/neodev.nvim',
-      opts = {}
+      opts = {},
     },
   },
   config = function()
@@ -37,18 +37,18 @@ return { -- LSP Configuration & Plugins
         -- In this case, we create a function that lets us more easily define mappings specific
         -- for LSP related items. It sets the mode, buffer and description for us each time.
         local map = function(keys, func, desc)
-          vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc, })
+          vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
         require('which-key').register({
           L = {
             name = 'Code Actions',
             d = { require('telescope.builtin').lsp_definitions, 'Goto Definition' },
-            i = { require('telescope.builtin').lsp_implementations, 'Goto Implementation' },
-            r = { vim.lsp.buf.rename, 'Rename' }
-          }
+            i = { require('telescope.builtin').lsp_implementationss, 'Goto Implementation' },
+            r = { vim.lsp.buf.rename, 'Rename' },
+          },
         }, {
-          prefix = '<leader>'
+          prefix = '<leader>',
         })
 
         -- Jump to the definition of the word under your cursor.

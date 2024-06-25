@@ -125,6 +125,7 @@ require('lazy').setup {
   require 'plugins.lazygit',
   require 'plugins.toggleterm',
   require 'plugins.lspsaga',
+  require 'plugins.lualine',
 }
 
 require 'autocmds'
