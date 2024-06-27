@@ -9,7 +9,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
-    '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
+    '3rd/image.nvim',              -- Optional image support in preview window: See `# Preview Mode` for more information
     {
       's1n7ax/nvim-window-picker',
       version = '2.*',
@@ -45,7 +45,7 @@ return {
       enable_git_status = true,
       enable_diagnostics = true,
       sort_case_insensitive = true, -- used when sorting files and directories in the tree
-      sort_function = nil, -- use a custom function for sorting files and directories in the tree
+      sort_function = nil,          -- use a custom function for sorting files and directories in the tree
       default_component_configs = {
         container = {
           enable_character_fade = true,
@@ -86,9 +86,9 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = '+', -- or "?", but this is redundant info if you use git_status_colors on the name
+            added = '+',    -- or "?", but this is redundant info if you use git_status_colors on the name
             modified = '~', -- or "?", but this is redundant info if you use git_status_colors on the name
-            deleted = '-', -- this can only be used in the git_status source
+            deleted = '-',  -- this can only be used in the git_status source
             renamed = '??', -- this can only be used in the git_status source
             -- Status type
             untracked = 'U',
@@ -209,12 +209,12 @@ return {
             --".null-ls_*",
           },
         },
+        follow_current_file = { enabled = true },
         filesystem = {
           bind_to_cwd = false,
-          follow_current_file = { enabled = true },
           use_libuv_file_watcher = true,
         },
-        group_empty_dirs = false, -- when true, empty folders will be grouped together
+        group_empty_dirs = false,               -- when true, empty folders will be grouped together
         hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
         -- "open_current",  -- netrw disabled, opening a directory opens within the
