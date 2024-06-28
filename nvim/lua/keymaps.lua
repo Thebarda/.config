@@ -1,10 +1,3 @@
-vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
-  desc = 'Toggle Spectre',
-})
-
-vim.keymap.set('n', '<leader>P', '<cmd>Telescope project<CR>', { desc = 'Telescope project' })
-vim.keymap.set('n', '<leader>g', '<cmd>Telescope live_grep<CR>', { desc = 'Telescope live grep' })
-
 require('which-key').register({
   L = {
     name = 'Code Actions',
@@ -14,6 +7,12 @@ require('which-key').register({
     s = { '<cmd>:Lspsaga diagnostic_jump_next<CR>', 'Show next diagnostic' },
     D = { '<cmd>:Lspsaga hover_doc<CR>', 'Show current documentation' },
   },
+  s = {
+    name = 'Search',
+    p = { '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', 'Search in current file' },
+    g = { require('telescope.builtin').live_grep, 'Search globally' },
+    f = { '<cmd>lua require("spectre").toggle()<CR>', 'Global find and replace' }
+  }
 }, {
   prefix = '<leader>',
 })
@@ -70,4 +69,8 @@ vim.keymap.set('n', '<leader>T', function()
   end)
 end, {
   desc = 'Toggle terminal',
+})
+
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', {
+  desc = "Search on current file"
 })
