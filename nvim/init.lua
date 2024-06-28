@@ -56,7 +56,7 @@ vim.opt.inccommand = 'split'
 
 vim.opt.cursorline = true
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
 
 vim.opt.hlsearch = true
 vim.opt.termguicolors = true
@@ -107,6 +107,7 @@ require('lazy').setup {
   require 'plugins.telescope',
   require 'plugins.telescope-project',
   require 'plugins.lsp',
+  require 'plugins.mason-tool-installer',
   require 'plugins.lsp-signature',
   require 'plugins.conform',
   require 'plugins.cmp',
