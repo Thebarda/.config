@@ -20,7 +20,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     { 'nvim-telescope/telescope-ui-select.nvim' },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     {
       'nvim-telescope/telescope-live-grep-args.nvim',
       version = '^1.0.0',
@@ -45,7 +45,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
           previewer = true,
           mappings = {
             i = {
-              ['<C-k>'] = lga_actions.quote_prompt { postfix = ' -g !*.po -g !*.lock' },
+              ['<C-k>'] = lga_actions.quote_prompt { postfix = ' -g !*.po -g !*.lock -g !*.png -g !*.jpg -g !kitty/ -g !static/' },
             },
           },
         },
@@ -53,6 +53,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
           on_project_selected = function(prompt_bufnr)
             project_actions.change_working_directory(prompt_bufnr, false)
             vim.cmd 'Neotree reveal'
+            vim.cmd 'Telescope find_files'
           end,
         },
       },
