@@ -12,7 +12,7 @@ require('which-key').register({
     name = 'Search',
     f = { require('telescope.builtin').find_files, 'Find file' },
     p = { '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', 'Search in current file' },
-    g = { require('telescope.builtin').live_grep, 'Live grep' },
+    g = { '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', 'Live grep' },
     h = { '<cmd>lua require("spectre").toggle()<CR>', 'Global find and replace' },
   },
 }, {
