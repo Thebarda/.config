@@ -7,12 +7,14 @@ require('which-key').register({
     s = { '<cmd>:Lspsaga diagnostic_jump_next<CR>', 'Show next diagnostic' },
     D = { '<cmd>:Lspsaga hover_doc<CR>', 'Show current documentation' },
   },
+  P = { '<cmd>Telescope project<CR>', 'Open project' },
   s = {
     name = 'Search',
+    f = { require('telescope.builtin').find_files, 'Find file' },
     p = { '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', 'Search in current file' },
-    g = { require('telescope.builtin').live_grep, 'Search globally' },
-    f = { '<cmd>lua require("spectre").toggle()<CR>', 'Global find and replace' }
-  }
+    g = { require('telescope.builtin').live_grep, 'Live grep' },
+    h = { '<cmd>lua require("spectre").toggle()<CR>', 'Global find and replace' },
+  },
 }, {
   prefix = '<leader>',
 })
@@ -72,5 +74,5 @@ end, {
 })
 
 vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', {
-  desc = "Search on current file"
+  desc = 'Search on current file',
 })
