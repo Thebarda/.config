@@ -126,6 +126,7 @@ require('lazy').setup {
   require 'plugins.toggleterm',
   require 'plugins.lspsaga',
   require 'plugins.lualine',
+  require 'plugins.colorizer'
 }
 
 require 'autocmds'
