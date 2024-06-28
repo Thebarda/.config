@@ -106,7 +106,6 @@ require('lazy').setup {
   require 'plugins.whichkey',
   require 'plugins.mini',
   require 'plugins.telescope',
-  require 'plugins.telescope-project',
   require 'plugins.lsp',
   require 'plugins.mason-tool-installer',
   require 'plugins.lsp-signature',
@@ -131,5 +130,3 @@ require('lazy').setup {
 
 require 'autocmds'
 require 'keymaps'
-
-require('telescope').load_extension 'project'

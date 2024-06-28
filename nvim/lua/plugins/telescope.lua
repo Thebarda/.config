@@ -25,10 +25,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
       'nvim-telescope/telescope-live-grep-args.nvim',
       version = '^1.0.0',
     },
+    { 'nvim-telescope/telescope-project.nvim' },
   },
   config = function()
     local telescope = require 'telescope'
     local lga_actions = require 'telescope-live-grep-args.actions'
+    local project_actions = require 'telescope._extensions.project.actions'
 
     telescope.setup {
       defaults = {
@@ -47,11 +49,18 @@ return { -- Fuzzy Finder (files, lsp, etc)
             },
           },
         },
+        project = {
+          on_project_selected = function(prompt_bufnr)
+            project_actions.change_working_directory(prompt_bufnr, false)
+            vim.cmd 'Neotree reveal'
+          end,
+        },
       },
     }
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
     telescope.load_extension 'live_grep_args'
+    require('telescope').load_extension 'project'
 
     local builtin = require 'telescope.builtin'
     -- vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
