@@ -235,14 +235,7 @@ return {
             ['<c-x>'] = 'clear_filter',
             ['[g'] = 'prev_git_modified',
             [']g'] = 'next_git_modified',
-            ['o'] = { 'show_help', nowait = false, config = { title = 'Order by', prefix_key = 'o' } },
-            ['oc'] = { 'order_by_created', nowait = false },
-            ['od'] = { 'order_by_diagnostics', nowait = false },
-            ['og'] = { 'order_by_git_status', nowait = false },
-            ['om'] = { 'order_by_modified', nowait = false },
-            ['on'] = { 'order_by_name', nowait = false },
-            ['os'] = { 'order_by_size', nowait = false },
-            ['ot'] = { 'order_by_type', nowait = false },
+            ['o'] = 'system_open',
             -- ['<key>'] = function(state) ... end,
           },
           fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
@@ -254,7 +247,26 @@ return {
           },
         },
 
-        commands = {}, -- Add a custom command or override a global one using the same function name
+        commands = {
+          system_open = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+            -- macOs: open file in default application in the background.
+            vim.fn.jobstart({ 'open', '-g', path }, { detach = true })
+            -- Linux: open file in default application
+            -- vim.fn.jobstart({ 'xdg-open', path }, { detach = true })
+
+            -- Windows: Without removing the file from the path, it opens in code.exe instead of explorer.exe
+            local p
+            local lastSlashIndex = path:match '^.+()\\[^\\]*$' -- Match the last slash and everything before it
+            if lastSlashIndex then
+              p = path:sub(1, lastSlashIndex - 1) -- Extract substring before the last slash
+            else
+              p = path -- If no slash found, return original path
+            end
+            vim.cmd('silent !start explorer ' .. p)
+          end,
+        }, -- Add a custom command or override a global one using the same function name
       },
       git_status = {
         window = {
