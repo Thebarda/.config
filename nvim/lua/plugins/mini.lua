@@ -63,8 +63,8 @@ return { -- Collection of various small independent plugins/modules
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
         left = '<S-j>',
         right = '<S-l>',
-        down = '<C-k>',
-        up = '<C-i>',
+        down = '<S-k>',
+        up = '<S-i>',
 
         -- Move current line in Normal mode
         line_left = '<S-j>',
