@@ -1,7 +1,13 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.opt.shell = '/bin/zsh'
+local OS = require("utils").getOS()
+if OS == 'Linux' then
+  vim.opt.shell = '/bin/bash'
+end
+if OS == "MacOS" then
+  vim.opt.shell = '/bin/zsh'
+end
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
