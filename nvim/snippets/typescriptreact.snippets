@@ -1,0 +1,23 @@
+extends typescript
+
+snippet comp "Component"
+	const ${1} = (): JSX.Element => {
+		${0}
+
+		return <div />
+	}
+
+	export default ${1};
+
+snippet compprops "Component with props"
+	interface Props {
+
+	}
+
+	const ${1} = ({}: Props): JSX.Element => {
+		${0}
+
+		return <div />
+	}
+
+	export default ${1};
