@@ -98,7 +98,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   require 'plugins.tabstop',
   require 'plugins.comment',
-  require 'plugins.image',
   require 'plugins.window-picker',
   require 'plugins.dressing',
   require 'plugins.gitsigns',
