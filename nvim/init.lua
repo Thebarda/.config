@@ -121,7 +121,6 @@ require('lazy').setup {
   require 'plugins.dashboard',
   require 'plugins.bufferline',
   require 'plugins.spectre',
-  require 'plugins.lazygit',
   require 'plugins.toggleterm',
   require 'plugins.lspsaga',
   require 'plugins.lualine',
