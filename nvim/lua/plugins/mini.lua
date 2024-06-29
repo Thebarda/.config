@@ -58,6 +58,8 @@ return { -- Collection of various small independent plugins/modules
     require('mini.cursorword').setup()
     local notify = require 'mini.notify'
     notify.setup()
+    vim.notify = notify.make_notify()
+
     require('mini.move').setup {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
