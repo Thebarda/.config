@@ -75,5 +75,12 @@ return { -- Collection of various small independent plugins/modules
         line_up = '<S-i>',
       },
     }
+
+    require('mini.indentscope').setup {
+      symbol = '│',
+      draw = {
+        delay = 0,
+      },
+    }
   end,
 }
