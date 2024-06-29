@@ -58,6 +58,8 @@ return { -- Collection of various small independent plugins/modules
     require('mini.cursorword').setup()
     local notify = require 'mini.notify'
     notify.setup()
+    vim.notify = notify.make_notify()
+
     require('mini.move').setup {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
@@ -71,6 +73,13 @@ return { -- Collection of various small independent plugins/modules
         line_right = '<S-l>',
         line_down = '<S-k>',
         line_up = '<S-i>',
+      },
+    }
+
+    require('mini.indentscope').setup {
+      symbol = '│',
+      draw = {
+        delay = 0,
       },
     }
   end,

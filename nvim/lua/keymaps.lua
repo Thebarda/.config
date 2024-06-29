@@ -14,6 +14,13 @@ require('which-key').register({
     p = { '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', 'Search in current file' },
     g = { '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', 'Live grep' },
     h = { '<cmd>lua require("spectre").toggle()<CR>', 'Global find and replace' },
+    b = { require('telescope.builtin').buffers, 'Search buffers' },
+    d = {
+      function()
+        require('telescope.builtin').diagnostics { bufnr = 0 }
+      end,
+      'Search diagnostics',
+    },
   },
 }, {
   prefix = '<leader>',
@@ -79,24 +86,24 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
 
 local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit  = Terminal:new({
-  cmd = "lazygit",
-  dir = "git_dir",
-  direction = "float",
+local lazygit = Terminal:new {
+  cmd = 'lazygit',
+  dir = 'git_dir',
+  direction = 'float',
   float_opts = {
-    border = "double",
+    border = 'curved',
   },
   -- function to run on opening the terminal
   on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    vim.cmd 'startinsert!'
+    vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
   end,
   -- function to run on closing the terminal
-  on_close = function(term)
-    vim.cmd("startinsert!")
+  on_close = function()
+    vim.cmd 'startinsert!'
   end,
-})
+}
 
-vim.keymap.set("n", "<leader>g", function()
+vim.keymap.set('n', '<leader>g', function()
   lazygit:open()
-end, { desc = "lazygit" })
+end, { desc = 'lazygit' })

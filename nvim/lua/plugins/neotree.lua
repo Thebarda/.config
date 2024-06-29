@@ -235,7 +235,8 @@ return {
             ['[g'] = 'prev_git_modified',
             [']g'] = 'next_git_modified',
             ['o'] = 'system_open',
-            -- ['<key>'] = function(state) ... end,
+            ['c'] = 'cypress_run',
+            ['cu'] = 'cypress_run_update',
           },
           fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
             ['<down>'] = 'move_cursor_down',
@@ -247,6 +248,46 @@ return {
         },
 
         commands = {
+          cypress_run_update = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+
+            if path:sub(-#'cypress.spec.tsx') ~= 'cypress.spec.tsx' then
+              vim.notify('Cannot run and update test file', vim.log.levels.ERROR)
+              return
+            end
+
+            local Terminal = require('toggleterm.terminal').Terminal
+
+            local term = Terminal:new {
+              cmd = 'pnpm cypress:run --env updateSnapshots=true --spec ' .. path,
+              dir = vim.uv.cwd(),
+              direction = 'horizontal',
+            }
+
+            vim.notiy('Running cypress for ' .. path)
+            term:open()
+          end,
+          cypress_run = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+
+            if path:sub(-#'cypress.spec.tsx') ~= 'cypress.spec.tsx' then
+              vim.notify('Cannot run test file', vim.log.levels.ERROR)
+              return
+            end
+
+            local Terminal = require('toggleterm.terminal').Terminal
+
+            local term = Terminal:new {
+              cmd = 'pnpm cypress:run --spec ' .. path,
+              dir = vim.uv.cwd(),
+              direction = 'horizontal',
+            }
+
+            vim.notiy('Running cypress for ' .. path)
+            term:open()
+          end,
           system_open = function(state)
             local OS = require('utils').getOS()
             local node = state.tree:get_node()
