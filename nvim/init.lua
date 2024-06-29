@@ -1,11 +1,11 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local OS = require("utils").getOS()
+local OS = require('utils').getOS()
 if OS == 'Linux' then
   vim.opt.shell = '/bin/bash'
 end
-if OS == "MacOS" then
+if OS == 'OSX' then
   vim.opt.shell = '/bin/zsh'
 end
 
@@ -130,7 +130,7 @@ require('lazy').setup {
   require 'plugins.toggleterm',
   require 'plugins.lspsaga',
   require 'plugins.lualine',
-  require 'plugins.colorizer'
+  require 'plugins.colorizer',
 }
 
 require 'autocmds'

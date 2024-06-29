@@ -44,7 +44,7 @@ return {
       enable_git_status = true,
       enable_diagnostics = true,
       sort_case_insensitive = true, -- used when sorting files and directories in the tree
-      sort_function = nil,          -- use a custom function for sorting files and directories in the tree
+      sort_function = nil, -- use a custom function for sorting files and directories in the tree
       default_component_configs = {
         container = {
           enable_character_fade = true,
@@ -85,9 +85,9 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = '+',    -- or "?", but this is redundant info if you use git_status_colors on the name
+            added = '+', -- or "?", but this is redundant info if you use git_status_colors on the name
             modified = '~', -- or "?", but this is redundant info if you use git_status_colors on the name
-            deleted = '-',  -- this can only be used in the git_status source
+            deleted = '-', -- this can only be used in the git_status source
             renamed = '??', -- this can only be used in the git_status source
             -- Status type
             untracked = 'U',
@@ -213,7 +213,7 @@ return {
           bind_to_cwd = false,
           use_libuv_file_watcher = true,
         },
-        group_empty_dirs = false,               -- when true, empty folders will be grouped together
+        group_empty_dirs = false, -- when true, empty folders will be grouped together
         hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
         -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -251,7 +251,7 @@ return {
             local OS = require('utils').getOS()
             local node = state.tree:get_node()
             local path = node:get_id()
-            if OS == 'MacOS' then
+            if OS == 'OSX' then
               -- macOs: open file in default application in the background.
               vim.fn.jobstart({ 'open', '-g', path }, { detach = true })
             end
@@ -264,9 +264,9 @@ return {
             local p
             local lastSlashIndex = path:match '^.+()\\[^\\]*$' -- Match the last slash and everything before it
             if lastSlashIndex then
-              p = path:sub(1, lastSlashIndex - 1)              -- Extract substring before the last slash
+              p = path:sub(1, lastSlashIndex - 1) -- Extract substring before the last slash
             else
-              p = path                                         -- If no slash found, return original path
+              p = path -- If no slash found, return original path
             end
             vim.cmd('silent !start explorer ' .. p)
           end,

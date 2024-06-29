@@ -1,21 +1,17 @@
 local getOS = function()
-  local OS = package.cpath:match("%p[\\|/]?%p(%a+)")
-
-  if OS == 'dll' then
-    return "Windows"
+  if jit then
+    return jit.os
   end
 
-  if OS == 'so' then
-    return "Linux"
+  local fh, err = assert(io.popen('uname -o 2>/dev/null', 'r'))
+  local osname = nil
+  if fh then
+    osname = fh:read()
   end
 
-  if OS == "dylib" then
-    return "MacOS"
-  end
-
-  return nil
+  return osname or 'Windows'
 end
 
 return {
-  getOS = getOS
+  getOS = getOS,
 }
