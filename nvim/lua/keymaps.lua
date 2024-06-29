@@ -79,24 +79,24 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
 
 local Terminal = require('toggleterm.terminal').Terminal
 
-local lazygit  = Terminal:new({
-  cmd = "lazygit",
-  dir = "git_dir",
-  direction = "float",
+local lazygit = Terminal:new {
+  cmd = 'lazygit',
+  dir = 'git_dir',
+  direction = 'float',
   float_opts = {
-    border = "double",
+    border = 'curved',
   },
   -- function to run on opening the terminal
   on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+    vim.cmd 'startinsert!'
+    vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
   end,
   -- function to run on closing the terminal
   on_close = function(term)
-    vim.cmd("startinsert!")
+    vim.cmd 'startinsert!'
   end,
-})
+}
 
-vim.keymap.set("n", "<leader>g", function()
+vim.keymap.set('n', '<leader>g', function()
   lazygit:open()
-end, { desc = "lazygit" })
+end, { desc = 'lazygit' })
