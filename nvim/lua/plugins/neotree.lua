@@ -292,7 +292,7 @@ return {
             local OS = require('utils').getOS()
             local node = state.tree:get_node()
             local path = node:get_id()
-            if OS == 'MacOS' then
+            if OS == 'OSX' then
               -- macOs: open file in default application in the background.
               vim.fn.jobstart({ 'open', '-g', path }, { detach = true })
             end

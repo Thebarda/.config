@@ -5,7 +5,7 @@ local OS = require('utils').getOS()
 if OS == 'Linux' then
   vim.opt.shell = '/bin/bash'
 end
-if OS == 'MacOS' then
+if OS == 'OSX' then
   vim.opt.shell = '/bin/zsh'
 end
 
