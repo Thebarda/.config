@@ -12,6 +12,9 @@ return {
       blend = {
         factor = 0.1,
       },
+      signs = {
+        arrow = '   ',
+      },
     }
   end,
 }
