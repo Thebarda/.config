@@ -131,6 +131,7 @@ require('lazy').setup {
   require 'plugins.lspsaga',
   require 'plugins.lualine',
   require 'plugins.colorizer',
+  require 'plugins.inline-diagnostic',
 }
 
 require 'autocmds'
