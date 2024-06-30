@@ -4,7 +4,7 @@ require('which-key').register({
     d = { require('telescope.builtin').lsp_definitions, 'Goto Definition' },
     i = { require('telescope.builtin').lsp_implementations, 'Goto Implementation' },
     r = { vim.lsp.buf.rename, 'Rename' },
-    s = { '<cmd>:Lspsaga diagnostic_jump_next<CR>', 'Show next diagnostic' },
+    s = { '<cmd>:Lspsaga code_action<CR>', 'Show code action' },
     D = { '<cmd>:Lspsaga hover_doc<CR>', 'Show current documentation' },
   },
   P = { '<cmd>Telescope project<CR>', 'Open project' },
