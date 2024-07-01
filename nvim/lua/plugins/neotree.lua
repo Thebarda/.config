@@ -265,7 +265,7 @@ return {
               direction = 'horizontal',
             }
 
-            vim.notiy('Running cypress for ' .. path)
+            vim.notify('Running cypress for ' .. path)
             term:open()
           end,
           cypress_run = function(state)
@@ -285,7 +285,7 @@ return {
               direction = 'horizontal',
             }
 
-            vim.notiy('Running cypress for ' .. path)
+            vim.notify('Running cypress for ' .. path)
             term:open()
           end,
           system_open = function(state)
