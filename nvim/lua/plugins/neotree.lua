@@ -149,7 +149,7 @@ return {
           ['t'] = 'open_tab_drop',
           ['w'] = 'open_with_window_picker',
           --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
-          ['C'] = 'close_node',
+          -- ['C'] = 'close_node',
           -- ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
           --["Z"] = "expand_all_nodes",
@@ -236,7 +236,7 @@ return {
             [']g'] = 'next_git_modified',
             ['o'] = 'system_open',
             ['c'] = 'cypress_run',
-            ['cu'] = 'cypress_run_update',
+            ['C'] = 'cypress_run_update',
           },
           fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
             ['<down>'] = 'move_cursor_down',
