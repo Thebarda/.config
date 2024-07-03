@@ -20,22 +20,14 @@ return { -- Autoformat
       typescript = { 'eslint_d' },
       javascriptreact = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use a sub-list to tell conform to run *until* a formatter
-      -- is found.
-      -- javascript = { { "prettierd", "prettier" } },
+    },
+    format_on_save = {
+      -- I recommend these options. See :help conform.format for details.
+      lsp_format = 'fallback',
+      timeout_ms = 2000,
     },
   },
   config = function(_, opts)
     require('conform').setup(opts)
-
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      pattern = '*.ts,*.tsx',
-      callback = function(args)
-        require('conform').format { bufnr = args.buf, lsp_fallback = true }
-      end,
-    })
   end,
 }
