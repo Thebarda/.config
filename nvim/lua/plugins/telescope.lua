@@ -32,9 +32,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
     local lga_actions = require 'telescope-live-grep-args.actions'
     local project_actions = require 'telescope._extensions.project.actions'
 
+    local extensions = { 'tsx', 'ts', 'php', 'go', 'js', 'lua', 'js', 'md', 'json' }
+    local includes = ''
+
+    for key, ext in pairs(extensions) do
+      includes = includes .. ' -g *.' .. ext
+    end
+
     telescope.setup {
       defaults = {
         file_ignore_patterns = { 'node_modules', '*.lock', 'static', '*.po', '*.png', '*.jpg' },
+        layout_strategy = 'vertical',
       },
       extensions = {
         ['ui-select'] = {
@@ -45,7 +53,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
           previewer = true,
           mappings = {
             i = {
-              ['<C-k>'] = lga_actions.quote_prompt { postfix = ' -g !*.po -g !*.lock -g !*.png -g !*.jpg -g !static/' },
+              ['<C-k>'] = lga_actions.quote_prompt { postfix = includes .. ' -g !static/ -g !**/pnpm-lock.yaml -g !**/package-lock.json' },
             },
           },
         },
