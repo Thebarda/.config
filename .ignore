@@ -1,0 +1,7 @@
+**/static
+**/pnpm-lock.yaml
+**/node_modules
+**/package-lock.json
+*.jpg
+*.png
+*.lock
