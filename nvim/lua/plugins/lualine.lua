@@ -3,14 +3,27 @@ return {
   event = 'VeryLazy',
   opts = function()
     local utils = require 'core.utils'
+    local defaultColor = utils.get_hlgroup('Operator', nil)
 
     return {
       options = {
-        component_separators = { left = ' ', right = ' ' },
-        section_separators = { left = ' ', right = ' ' },
-        theme = 'auto',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        theme = 'gruvbox-material',
         globalstatus = true,
-        disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'toggleterm', 'TelescopePrompt', 'neotree' } },
+        disabled_filetypes = {
+          statusline = {
+            'dashboard',
+            'alpha',
+            'toggleterm',
+            'TelescopePrompt',
+            'neo-tree',
+            'help',
+            'oil',
+            'lazy',
+            'qf',
+          },
+        },
       },
       sections = {
         lualine_a = { { 'mode', icon = '' } },
@@ -25,8 +38,8 @@ return {
               hint = '󰴓 ',
             },
           },
-          { 'filetype', icon_only = true, separator = '', padding = { left = 1, right = 0 } },
-          { 'filename', padding = { left = 1, right = 1 }, color = utils.get_hlgroup('Operator', nil) },
+          { 'filetype', icon_only = true, padding = { left = 1, right = 0 }, color = defaultColor },
+          { 'filename', padding = { left = 1, right = 1 }, color = defaultColor },
           {
             function()
               local buffer_count = require('core.utils').get_buffer_count()
@@ -36,8 +49,8 @@ return {
             cond = function()
               return require('core.utils').get_buffer_count() > 1
             end,
-            color = utils.get_hlgroup('Operator', nil),
             padding = { left = 1, right = 1 },
+            color = defaultColor,
           },
           {
             function()
@@ -53,7 +66,6 @@ return {
           {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
-            color = utils.get_hlgroup 'String',
           },
           { 'diff' },
         },
