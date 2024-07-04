@@ -29,7 +29,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
   },
   config = function()
     local telescope = require 'telescope'
-    local lga_actions = require 'telescope-live-grep-args.actions'
     local project_actions = require 'telescope._extensions.project.actions'
 
     telescope.setup {

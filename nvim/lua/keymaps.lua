@@ -11,7 +11,8 @@ require('which-key').register({
   s = {
     name = 'Search',
     f = { require('telescope.builtin').find_files, 'Find file' },
-    p = { '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', 'Search in current file' },
+    p = { require('telescope-live-grep-args.shortcuts').grep_word_under_cursor_current_buffer, 'Search in current file' },
+    P = { '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', 'Search and replace in current file' },
     g = { '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', 'Live grep' },
     h = { '<cmd>lua require("spectre").toggle()<CR>', 'Global find and replace' },
     b = { require('telescope.builtin').buffers, 'Search buffers' },
