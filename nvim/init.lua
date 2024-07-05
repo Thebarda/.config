@@ -132,6 +132,7 @@ require('lazy').setup {
   require 'plugins.lualine',
   require 'plugins.colorizer',
   require 'plugins.inline-diagnostic',
+  require 'plugins.ufo',
 }
 
 require 'autocmds'
