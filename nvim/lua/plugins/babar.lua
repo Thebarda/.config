@@ -15,6 +15,11 @@ return {
         [vim.diagnostic.severity.INFO] = { enabled = true },
         [vim.diagnostic.severity.HINT] = { enabled = true },
       },
+      separator = { left = '▎', right = '' },
+    },
+    button = '',
+    sidebar_filetypes = {
+      ['neo-tree'] = { event = 'BufWipeout' },
     },
   },
   version = '^1.0.0', -- optional: only update when a new 1.x version is released
