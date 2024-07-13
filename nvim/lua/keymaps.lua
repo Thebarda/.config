@@ -1,31 +1,26 @@
-require('which-key').register({
-  L = {
-    name = 'Code Actions',
-    d = { require('telescope.builtin').lsp_definitions, 'Goto Definition' },
-    i = { require('telescope.builtin').lsp_implementations, 'Goto Implementation' },
-    r = { vim.lsp.buf.rename, 'Rename' },
-    s = { '<cmd>:Lspsaga code_action<CR>', 'Show code action' },
-    D = { '<cmd>:Lspsaga hover_doc<CR>', 'Show current documentation' },
+require('which-key').add {
+  { '<leader>L', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
+  { '<leader>Ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
+  { '<leader>LD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
+  { '<leader>Li', require('telescope.builtin').lsp_implementations, desc = 'Goto Implementation' },
+  { '<leader>Lr', vim.lsp.buf.rename, desc = 'Rename' },
+  { '<leader>Ls', '<cmd>:Lspsaga code_action<CR>', desc = 'Show code action' },
+  { '<leader>P', '<cmd>Telescope project<CR>', desc = 'Open project', icon = ' ' },
+  { '<leader>s', group = 'Search', icon = { icon = ' ', color = 'green' } },
+  { '<leader>sf', require('telescope.builtin').find_files, desc = 'Find file' },
+  { '<leader>sp', require('telescope-live-grep-args.shortcuts').grep_word_under_cursor_current_buffer, desc = 'Search in current file' },
+  { '<leader>sP', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', desc = 'Search and replace in current file' },
+  { '<leader>sg', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', desc = 'Live grep' },
+  { '<leader>sh', '<cmd>lua require("spectre").toggle()<CR>', desc = 'Global find and replace' },
+  { '<leader>sb', require('telescope.builtin').buffers, desc = 'Search buffers' },
+  {
+    '<leader>sd',
+    function()
+      require('telescope.builtin').diagnostics { bufnr = 0 }
+    end,
+    desc = 'Search diagnostics',
   },
-  P = { '<cmd>Telescope project<CR>', 'Open project' },
-  s = {
-    name = 'Search',
-    f = { require('telescope.builtin').find_files, 'Find file' },
-    p = { require('telescope-live-grep-args.shortcuts').grep_word_under_cursor_current_buffer, 'Search in current file' },
-    P = { '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', 'Search and replace in current file' },
-    g = { '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', 'Live grep' },
-    h = { '<cmd>lua require("spectre").toggle()<CR>', 'Global find and replace' },
-    b = { require('telescope.builtin').buffers, 'Search buffers' },
-    d = {
-      function()
-        require('telescope.builtin').diagnostics { bufnr = 0 }
-      end,
-      'Search diagnostics',
-    },
-  },
-}, {
-  prefix = '<leader>',
-})
+}
 
 vim.keymap.set('n', ';', function()
   vim.ui.input({ prompt = 'Type Vim command' }, function(text)

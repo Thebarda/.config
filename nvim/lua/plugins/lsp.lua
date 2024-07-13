@@ -40,17 +40,6 @@ return { -- LSP Configuration & Plugins
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        require('which-key').register({
-          L = {
-            name = 'Code Actions',
-            d = { require('telescope.builtin').lsp_definitions, 'Goto Definition' },
-            i = { require('telescope.builtin').lsp_implementationss, 'Goto Implementation' },
-            r = { vim.lsp.buf.rename, 'Rename' },
-          },
-        }, {
-          prefix = '<leader>',
-        })
-
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
         -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
