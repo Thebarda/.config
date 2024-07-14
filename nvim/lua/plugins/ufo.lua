@@ -75,8 +75,7 @@ return {
       preview = {},
     }
 
-    local utils = require 'core.utils'
-    local defaultColor = utils.get_hlgroup('Boolean', nil)
+    local defaultColor = vim.api.nvim_get_hl(0, { name = 'Boolean' })
 
     vim.cmd('highlight FoldColumn guifg=' .. defaultColor.fg, 'fg')
   end,
