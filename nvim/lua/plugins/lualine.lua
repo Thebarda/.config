@@ -2,13 +2,19 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   opts = function()
-    local defaultColor = { bg = 'NONE', fg = 'NONE' }
+    local defaultColor = { bg = 'NONE', fg = 'NONE', gui = 'NONE' }
+    local custom_gruvbox = require 'lualine.themes.gruvbox-material'
+    local modes = { 'normal', 'command', 'insert', 'inactive', 'replace', 'terminal', 'visual' }
+
+    for _, mode in ipairs(modes) do
+      custom_gruvbox[mode].c.bg = 'NONE'
+    end
 
     return {
       options = {
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-        theme = 'gruvbox-material',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        theme = custom_gruvbox,
         disabled_filetypes = {
           statusline = {
             'dashboard',
@@ -81,7 +87,7 @@ return {
         lualine_z = {
           {
             'datetime',
-            style = '  %X',
+            style = ' %X',
           },
         },
       },
