@@ -13,9 +13,6 @@ return { -- Useful plugin to show you pending keybinds.
         spacing = 1,
         align = 'center',
       },
-      triggers_blacklist = {
-        n = { 'd', 'y' },
-      },
     }
   end,
 }
