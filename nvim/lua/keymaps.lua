@@ -76,10 +76,6 @@ end, {
   desc = 'Toggle terminal',
 })
 
-vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', {
-  desc = 'Search on current file',
-})
-
 local Terminal = require('toggleterm.terminal').Terminal
 
 local lazygit = Terminal:new {

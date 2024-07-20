@@ -15,7 +15,7 @@ return {
         [vim.diagnostic.severity.INFO] = { enabled = true },
         [vim.diagnostic.severity.HINT] = { enabled = true },
       },
-      separator = { left = '▎', right = '' },
+      separator = { left = '▎', right = '' },
     },
     button = '',
     sidebar_filetypes = {
@@ -31,6 +31,7 @@ return {
     local error = vim.api.nvim_get_hl(0, { name = 'DiagnosticError' })
     local info = vim.api.nvim_get_hl(0, { name = 'DiagnosticInfo' })
     local hint = vim.api.nvim_get_hl(0, { name = 'DiagnosticHint' })
+    local normal = vim.api.nvim_get_hl(0, { name = 'Normal' })
 
     vim.api.nvim_set_hl(0, 'BufferInactiveWARN', { bg = inactive_buffer.bg, fg = warning.fg })
     vim.api.nvim_set_hl(0, 'BufferCurrentWARN', { bg = current_buffer.bg, fg = warning.fg })
@@ -40,5 +41,9 @@ return {
     vim.api.nvim_set_hl(0, 'BufferCurrentINFO', { bg = current_buffer.bg, fg = info.fg })
     vim.api.nvim_set_hl(0, 'BufferInactiveHINT', { bg = inactive_buffer.bg, fg = hint.fg })
     vim.api.nvim_set_hl(0, 'BufferCurrentHINT', { bg = current_buffer.bg, fg = hint.fg })
+    vim.api.nvim_set_hl(0, 'BufferOffset', { bg = normal.bg, fg = normal.fg, cterm = normal.cterm })
+    vim.api.nvim_set_hl(0, 'BufferScrollArrow', { bg = normal.bg, fg = normal.fg, cterm = normal.cterm })
+    vim.api.nvim_set_hl(0, 'BufferTabpageFill', { bg = normal.bg, fg = normal.fg, cterm = normal.cterm })
+    vim.api.nvim_set_hl(0, 'BufferTabpages', { bg = normal.bg, fg = normal.fg, cterm = normal.cterm })
   end,
 }
