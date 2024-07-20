@@ -1,3 +1,16 @@
+local colors = {
+  fg1 = '#282828',
+  color2 = '#504945',
+  fg2 = '#ddc7a1',
+  color3 = '#32302f',
+  color4 = '#a89984',
+  color5 = '#7daea3',
+  color6 = '#a9b665',
+  color7 = '#d8a657',
+  color8 = '#d3869b',
+  color9 = '#ea6962',
+}
+
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -8,6 +21,17 @@ return {
 
     for _, mode in ipairs(modes) do
       custom_gruvbox[mode].c.bg = 'NONE'
+    end
+
+    local sections = { 'b', 'y' }
+    for _, section in ipairs(sections) do
+      custom_gruvbox.normal[section] = { fg = colors.fg1, bg = colors.color4 }
+      custom_gruvbox.insert[section] = { fg = colors.fg1, bg = colors.color6 }
+      custom_gruvbox.command[section] = { fg = colors.fg1, bg = colors.color5 }
+      custom_gruvbox.inactive[section] = { fg = colors.fg2, bg = colors.color2 }
+      custom_gruvbox.replace[section] = { fg = colors.fg1, bg = colors.color7 }
+      custom_gruvbox.terminal[section] = { fg = colors.fg1, bg = colors.color8 }
+      custom_gruvbox.visual[section] = { fg = colors.fg1, bg = colors.color9 }
     end
 
     return {
@@ -30,7 +54,7 @@ return {
       },
       sections = {
         lualine_a = { { 'mode', icon = '' } },
-        lualine_b = { { 'branch', icon = '', color = defaultColor } },
+        lualine_b = { { 'branch', icon = '' } },
         lualine_c = {
           {
             'diagnostics',
@@ -67,21 +91,14 @@ return {
           },
         },
         lualine_x = {
-          {
-            require('lazy.status').updates,
-            cond = require('lazy.status').has_updates,
-            color = defaultColor,
-          },
-          { 'diff', color = defaultColor },
+          { 'diff' },
         },
         lualine_y = {
           {
             'progress',
-            color = defaultColor,
           },
           {
             'location',
-            color = defaultColor,
           },
         },
         lualine_z = {
