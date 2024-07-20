@@ -2,15 +2,13 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   opts = function()
-    local utils = require 'core.utils'
-    local defaultColor = utils.get_hlgroup('Operator', nil)
+    local defaultColor = { bg = 'NONE', fg = 'NONE' }
 
     return {
       options = {
         component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         theme = 'gruvbox-material',
-        globalstatus = true,
         disabled_filetypes = {
           statusline = {
             'dashboard',
@@ -19,7 +17,6 @@ return {
             'TelescopePrompt',
             'neo-tree',
             'help',
-            'oil',
             'lazy',
             'qf',
           },
@@ -27,7 +24,7 @@ return {
       },
       sections = {
         lualine_a = { { 'mode', icon = '' } },
-        lualine_b = { { 'branch', icon = '' } },
+        lualine_b = { { 'branch', icon = '', color = defaultColor } },
         lualine_c = {
           {
             'diagnostics',
@@ -37,6 +34,7 @@ return {
               info = ' ',
               hint = '󰴓 ',
             },
+            color = defaultColor,
           },
           { 'filetype', icon_only = true, padding = { left = 1, right = 0 }, color = defaultColor },
           { 'filename', padding = { left = 1, right = 1 }, color = defaultColor },
@@ -44,7 +42,7 @@ return {
             function()
               local buffer_count = require('core.utils').get_buffer_count()
 
-              return '+' .. buffer_count - 1 .. ' '
+              return '+' .. buffer_count - 1 .. '  '
             end,
             cond = function()
               return require('core.utils').get_buffer_count() > 1
@@ -59,23 +57,25 @@ return {
             cond = function()
               return package.loaded['nvim-navic'] and require('nvim-navic').is_available()
             end,
-            color = utils.get_hlgroup('Comment', nil),
+            color = defaultColor,
           },
         },
         lualine_x = {
           {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
+            color = defaultColor,
           },
-          { 'diff' },
+          { 'diff', color = defaultColor },
         },
         lualine_y = {
           {
             'progress',
+            color = defaultColor,
           },
           {
             'location',
-            color = utils.get_hlgroup 'Boolean',
+            color = defaultColor,
           },
         },
         lualine_z = {
