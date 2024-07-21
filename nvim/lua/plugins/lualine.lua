@@ -68,27 +68,6 @@ return {
           },
           { 'filetype', icon_only = true, padding = { left = 1, right = 0 }, color = defaultColor },
           { 'filename', padding = { left = 1, right = 1 }, color = defaultColor },
-          {
-            function()
-              local buffer_count = require('core.utils').get_buffer_count()
-
-              return '+' .. buffer_count - 1 .. '  '
-            end,
-            cond = function()
-              return require('core.utils').get_buffer_count() > 1
-            end,
-            padding = { left = 1, right = 1 },
-            color = defaultColor,
-          },
-          {
-            function()
-              return require('nvim-navic').get_location()
-            end,
-            cond = function()
-              return package.loaded['nvim-navic'] and require('nvim-navic').is_available()
-            end,
-            color = defaultColor,
-          },
         },
         lualine_x = {
           { 'diff' },

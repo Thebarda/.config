@@ -72,7 +72,7 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.expandtab = true
-vim.o.guifont = 'Operator Mono Book:h12,Hack Nerd Font:h12'
+vim.o.guifont = 'Operator Mono Book,Hack Nerd Font'
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })

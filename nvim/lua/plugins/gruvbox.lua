@@ -8,7 +8,7 @@ return {
     g.gruvbox_material_enable_italic = '1'
     g.gruvbox_material_transparent_background = '2'
     g.gruvbox_material_visual = 'blue background'
-    g.gruvbox_material_current_word = 'bold'
+    g.gruvbox_material_current_word = 'underline'
     g.gruvbox_material_diagnostic_virtual_text = 'highlighted'
     vim.cmd.colorscheme 'gruvbox-material'
   end,
