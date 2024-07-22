@@ -5,8 +5,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client == nil or vim.tbl_contains({ 'null-ls' }, client.name) then -- blacklist lsp
       return
     end
-    require('lsp_signature').on_attach({
-      -- ... setup options here ...
-    }, bufnr)
+    require('lsp_signature').on_attach({}, bufnr)
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+  callback = function(args)
+    vim.notify(args.file .. ' saved', 'success')
   end,
 })

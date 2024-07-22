@@ -56,9 +56,6 @@ return { -- Collection of various small independent plugins/modules
     }
 
     require('mini.cursorword').setup()
-    local notify = require 'mini.notify'
-    notify.setup()
-    vim.notify = notify.make_notify()
 
     require('mini.move').setup {
       mappings = {
