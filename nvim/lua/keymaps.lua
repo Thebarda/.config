@@ -1,3 +1,5 @@
+local Input = require 'nui.input'
+
 require('which-key').add {
   { '<leader>L', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
   { '<leader>Ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
@@ -23,12 +25,31 @@ require('which-key').add {
 }
 
 vim.keymap.set('n', ';', function()
-  vim.ui.input({ prompt = 'Type Vim command' }, function(text)
-    if text == nil then
-      return
-    end
-    vim.cmd(text)
-  end)
+  local vimCmdInput = Input({
+    position = '50%',
+    size = {
+      width = 20,
+    },
+    border = {
+      style = 'single',
+    },
+    win_options = {
+      winhighlight = 'Normal:Normal,FloatBorder:Normal',
+    },
+  }, {
+    prompt = '> ',
+    on_submit = function(text)
+      if text == nil then
+        return
+      end
+      vim.cmd(text)
+    end,
+  })
+
+  vimCmdInput:map('n', '<Esc>', function()
+    vimCmdInput:unmount()
+  end, { noremap = true })
+  vimCmdInput:mount()
 end)
 
 vim.keymap.set('n', '<leader>T', function()

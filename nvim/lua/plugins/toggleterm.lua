@@ -1,5 +1,6 @@
 return {
   'akinsho/toggleterm.nvim',
-  version = "*",
-  config = true
+  version = '*',
+  config = true,
+  event = 'VeryLazy',
 }

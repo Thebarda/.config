@@ -16,7 +16,7 @@ return {
             group = 'DiagnosticHint',
             action = 'Telescope project',
             key = 'p',
-          }
+          },
         },
       },
       packages = { enable = true },

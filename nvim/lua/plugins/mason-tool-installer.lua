@@ -1,5 +1,7 @@
 return {
   'WhoIsSethDaniel/mason-tool-installer.nvim',
+  cmd = 'MasonToolsUpdate',
+  event = 'BufReadPre',
   config = function()
     require('mason-tool-installer').setup {
       auto_update = true,

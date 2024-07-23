@@ -1,5 +1,6 @@
 return {
   'numToStr/Comment.nvim',
+  event = 'BufReadPre',
   opts = {
     toggler = {
       ---Line-comment toggle keymap

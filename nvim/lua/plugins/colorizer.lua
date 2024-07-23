@@ -5,17 +5,18 @@ local config = {
   RRGGBBAA = true,
   rgb_fn = true,
   hsl_fn = true,
-  mode = 'background'
+  mode = 'background',
 }
 
 return {
   'norcalli/nvim-colorizer.lua',
+  event = 'BufReadPre',
   config = function()
-    require('colorizer').setup({
+    require('colorizer').setup {
       '*',
       css = config,
       html = config,
       ts = config,
-    })
-  end
+    }
+  end,
 }

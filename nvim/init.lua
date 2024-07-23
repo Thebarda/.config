@@ -8,8 +8,11 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
+  checker = { enabler = true },
+  defaults = {
+    lazy = true,
+  },
   spec = {
-    -- import your plugins
     { import = 'plugins' },
   },
 }

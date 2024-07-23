@@ -1,1 +1,1 @@
-return { 'nvim-lua/plenary.nvim', enabled = true }
+return { 'nvim-lua/plenary.nvim', event = 'BufReadPre' }
