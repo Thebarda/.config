@@ -1,6 +1,8 @@
 return {
-  "ray-x/lsp_signature.nvim",
-  event = "VeryLazy",
+  'ray-x/lsp_signature.nvim',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {},
-  config = function(_, opts) require 'lsp_signature'.setup(opts) end
+  config = function(_, opts)
+    require('lsp_signature').setup(opts)
+  end,
 }

@@ -13,7 +13,7 @@ local colors = {
 
 return {
   'nvim-lualine/lualine.nvim',
-  event = 'VeryLazy',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = function()
     local defaultColor = { bg = 'NONE', fg = 'NONE', gui = 'NONE' }
     local custom_gruvbox = require 'lualine.themes.gruvbox-material'
