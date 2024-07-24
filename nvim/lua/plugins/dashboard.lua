@@ -18,6 +18,13 @@ return {
             key = 'p',
           },
         },
+        project = {
+          action = function(path)
+            vim.cmd('cd ' .. path)
+            vim.cmd 'Neotree reveal'
+            vim.cmd('Telescope find_files cwd=' .. path)
+          end,
+        },
       },
       packages = { enable = true },
     }
