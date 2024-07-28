@@ -114,3 +114,5 @@ local lazygit = Terminal:new {
 vim.keymap.set('n', '<leader>g', function()
   lazygit:open()
 end, { desc = 'lazygit' })
+
+vim.keymap.set('n', '<c-right>', '<s-right>')
