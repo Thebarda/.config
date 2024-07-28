@@ -21,3 +21,31 @@ snippet compprops "Component with props"
 	}
 
 	export default ${1};
+
+snippet hook "Hook"
+	const use${1} = (): ${2:void} => {
+		${0}
+	}
+
+snippet hookprops "Hook with props"
+	interface Props {
+		
+	}
+	
+	const use${1} = ({}: Props): ${2:void} => {
+		${0}
+	}
+
+snippet useMemo "useMemo"
+	const ${1} = useMemo(() => ${0}, [${2}]);
+
+snippet useCallback "useCallback"
+	const ${1} = useCallback(() => {
+		${0}
+	}, [${2}]);
+
+snippet useRef "useRef"
+	const ${1}Ref = useRef(${0:null});
+
+snippet useState "useState"
+	const [${1}, set${2}] = useState(${0:null});
