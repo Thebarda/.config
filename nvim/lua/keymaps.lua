@@ -1,12 +1,13 @@
 local Input = require 'nui.input'
 
 require('which-key').add {
-  { '<leader>L', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
-  { '<leader>Ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
-  { '<leader>LD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
-  { '<leader>Li', require('telescope.builtin').lsp_implementations, desc = 'Goto Implementation' },
-  { '<leader>Lr', vim.lsp.buf.rename, desc = 'Rename' },
-  { '<leader>Ls', '<cmd>:Lspsaga code_action<CR>', desc = 'Show code action' },
+  { '<leader>l', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
+  { '<leader>ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
+  { '<leader>lD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
+  { '<leader>li', require('telescope.builtin').lsp_implementations, desc = 'Goto Implementation' },
+  { '<leader>lr', vim.lsp.buf.rename, desc = 'Rename' },
+  { '<leader>ls', '<cmd>:Lspsaga code_action<CR>', desc = 'Show code action' },
+  { '<leader>lh', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show documentation' },
   { '<leader>P', '<cmd>Telescope project<CR>', desc = 'Open project', icon = ' ' },
   { '<leader>s', group = 'Search', icon = { icon = ' ', color = 'green' } },
   { '<leader>sf', require('telescope.builtin').find_files, desc = 'Find file' },
