@@ -2,14 +2,14 @@ local Input = require 'nui.input'
 
 require('which-key').add {
   mode = { 'n', 'v' },
-  { '<leader>L', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
-  { '<leader>Ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
-  { '<leader>LD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
-  { '<leader>Li', require('telescope.builtin').lsp_implementations, desc = 'Goto Implementation' },
-  { '<leader>Lr', vim.lsp.buf.rename, desc = 'Rename' },
-  { '<leader>La', '<cmd>:Lspsaga code_action<CR>', desc = 'Show code action' },
+  { '<leader>l', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
+  { '<leader>ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
+  { '<leader>lD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
+  { '<leader>li', require('telescope.builtin').lsp_implementations, desc = 'Goto Implementation' },
+  { '<leader>lr', vim.lsp.buf.rename, desc = 'Rename' },
+  { '<leader>la', '<cmd>:Lspsaga code_action<CR>', desc = 'Show code action' },
   {
-    '<leader>Ls',
+    '<leader>ls',
     function()
       require('nvim-silicon').shoot()
     end,
