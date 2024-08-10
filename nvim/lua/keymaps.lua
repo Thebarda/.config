@@ -1,13 +1,20 @@
 local Input = require 'nui.input'
 
 require('which-key').add {
+  mode = { 'n', 'v' },
   { '<leader>l', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
   { '<leader>ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
   { '<leader>lD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
   { '<leader>li', require('telescope.builtin').lsp_implementations, desc = 'Goto Implementation' },
   { '<leader>lr', vim.lsp.buf.rename, desc = 'Rename' },
-  { '<leader>ls', '<cmd>:Lspsaga code_action<CR>', desc = 'Show code action' },
-  { '<leader>lh', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show documentation' },
+  { '<leader>la', '<cmd>:Lspsaga code_action<CR>', desc = 'Show code action' },
+  {
+    '<leader>ls',
+    function()
+      require('nvim-silicon').shoot()
+    end,
+    desc = 'Create code screenshot',
+  },
   { '<leader>P', '<cmd>Telescope project<CR>', desc = 'Open project', icon = ' ' },
   { '<leader>s', group = 'Search', icon = { icon = ' ', color = 'green' } },
   { '<leader>sf', require('telescope.builtin').find_files, desc = 'Find file' },
@@ -115,5 +122,3 @@ local lazygit = Terminal:new {
 vim.keymap.set('n', '<leader>g', function()
   lazygit:open()
 end, { desc = 'lazygit' })
-
-vim.keymap.set('n', '<c-right>', '<s-right>')

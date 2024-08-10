@@ -54,13 +54,7 @@ return { -- Autocompletion
       -- chosen, you will need to read `:help ins-completion`
       --
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
-      mapping = cmp.mapping.preset.insert {
-        ['<Down>'] = {
-          i = function() end,
-        },
-        ['<Up>'] = {
-          i = function() end,
-        }, -- Scroll the documentation window [b]ack / [f]orward
+      mapping = cmp.mapping {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
