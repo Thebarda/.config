@@ -56,6 +56,5 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require('telescope').load_extension, 'ui-select')
     telescope.load_extension 'live_grep_args'
     require('telescope').load_extension 'project'
-    require('telescope').load_extension 'notify'
   end,
 }
