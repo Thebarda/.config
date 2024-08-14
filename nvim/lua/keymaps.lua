@@ -30,6 +30,11 @@ require('which-key').add {
     end,
     desc = 'Search diagnostics',
   },
+  {
+    '<leader>d',
+    '<cmd>Dashboard<CR>',
+    desc = 'Open Dashboard',
+  },
 }
 
 vim.keymap.set('n', ';', function()

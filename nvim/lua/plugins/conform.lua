@@ -16,10 +16,10 @@ return { -- Autoformat
     notify_on_error = true,
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascipt = { 'eslint_d' },
-      typescript = { 'eslint_d' },
-      javascriptreact = { 'eslint_d' },
-      typescriptreact = { 'eslint_d' },
+      javascipt = { 'eslint_d', 'prettierd', stop_after_first = true },
+      typescript = { 'eslint_d', 'prettierd', stop_after_first = true },
+      javascriptreact = { 'eslint_d', 'prettierd', stop_after_first = true },
+      typescriptreact = { 'eslint_d', 'prettierd', stop_after_first = true },
     },
     format_on_save = {
       -- I recommend these options. See :help conform.format for details.

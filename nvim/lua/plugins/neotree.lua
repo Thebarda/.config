@@ -189,7 +189,7 @@ return {
       filesystem = {
         filtered_items = {
           visible = true, -- when true, they will just be displayed differently than normal items
-          hide_dotfiles = true,
+          hide_dotfiles = false,
           hide_gitignored = true,
           hide_hidden = true, -- only works on Windows for hidden files/directories
           hide_by_name = {
@@ -203,6 +203,7 @@ return {
             --".gitignored",
           },
           never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+            '.git',
             --".DS_Store",
             --"thumbs.db"
           },
