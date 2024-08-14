@@ -1,33 +1,25 @@
 return {
-  'rcarriga/nvim-notify',
+  'j-hui/fidget.nvim',
   event = 'BufReadPre',
-  config = function()
-    local notify = require 'notify'
-    notify.setup {
-      background_colour = 'NotifyBackground',
-      render = 'wrapped-compact',
-      icons = {
-        DEBUG = '',
-        ERROR = '',
-        INFO = '',
-        TRACE = '✎',
-        WARN = '',
+  opts = {
+    notification = {
+      configs = {
+        default = {
+          icon = nil,
+          name = nil,
+        },
       },
-      level = 2,
-      minimum_width = 50,
-      max_width = 60,
-      max_height = 150,
-      on_open = function() end,
-      on_close = function() end,
-      stages = 'fade_in_slide_out',
-      time_formats = {
-        notification = '%T',
-        notification_history = '%FT%T',
+      override_vim_notify = true,
+      view = {
+        stack_upwards = false,
       },
-      timeout = 2500,
-      top_down = true,
-      fps = 60,
-    }
-    vim.notify = notify
-  end,
+      window = {
+        normal_hl = 'NormalFloat',
+        winblend = 30,
+        border = 'solid',
+        max_width = 50,
+        align = 'top',
+      },
+    },
+  },
 }
