@@ -22,7 +22,7 @@ return {
           action = function(path)
             vim.cmd('cd ' .. path)
             vim.cmd 'Neotree reveal'
-            vim.cmd('Telescope find_files cwd=' .. path)
+            vim.cmd('Telescope find_files winblend=20 cwd=' .. path)
           end,
         },
       },

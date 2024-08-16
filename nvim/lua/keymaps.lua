@@ -15,14 +15,26 @@ require('which-key').add {
     end,
     desc = 'Create code screenshot',
   },
-  { '<leader>P', '<cmd>Telescope project<CR>', desc = 'Open project', icon = ' ' },
+  { '<leader>P', '<cmd>Telescope project winblend=30<CR>', desc = 'Open project', icon = ' ' },
   { '<leader>s', group = 'Search', icon = { icon = ' ', color = 'green' } },
-  { '<leader>sf', require('telescope.builtin').find_files, desc = 'Find file' },
-  { '<leader>sp', require('telescope-live-grep-args.shortcuts').grep_word_under_cursor_current_buffer, desc = 'Search in current file' },
+  {
+    '<leader>sf',
+    function()
+      require('telescope.builtin').find_files { winblend = 20 }
+    end,
+    desc = 'Find file',
+  },
+  {
+    '<leader>sp',
+    function()
+      require('telescope-live-grep-args.shortcuts').grep_word_under_cursor_current_buffer { winblend = 20 }
+    end,
+    desc = 'Search in current file',
+  },
   { '<leader>sP', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', desc = 'Search and replace in current file' },
-  { '<leader>sg', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', desc = 'Live grep' },
+  { '<leader>sg', '<cmd>Telescope live_grep_args winblend=20<CR>', desc = 'Live grep' },
   { '<leader>sh', '<cmd>lua require("spectre").toggle()<CR>', desc = 'Global find and replace' },
-  { '<leader>sb', require('telescope.builtin').buffers, desc = 'Search buffers' },
+  { '<leader>sb', '<cmd>Telescope buffers winblend=20<CR>', desc = 'Search buffers' },
   {
     '<leader>sd',
     function()

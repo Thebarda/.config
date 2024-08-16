@@ -12,7 +12,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       build = 'make',
 
       -- `cond` is a condition used to determine whether this plugin should be
-      -- installed and loaded.
+      -- installed and loade;webd.
       cond = function()
         return vim.fn.executable 'make' == 1
       end,
