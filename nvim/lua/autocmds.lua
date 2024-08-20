@@ -29,3 +29,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     vim.notify(default_encouragements[math.random(#default_encouragements)], 'success', { title = 'File saved' })
   end,
 })
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+  callback = function(args)
+    vim.cmd('silent !biome check --write ' .. args.file)
+  end,
+})
