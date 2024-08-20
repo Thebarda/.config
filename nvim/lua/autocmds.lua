@@ -30,8 +30,22 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   end,
 })
 
+local biomeExtensions = { 'js', 'jsx', 'tsx', 'ts', 'css' }
+
+local matchWithExtensions = function(path, extensions)
+  for _, value in ipairs(extensions) do
+    if string.match(path, '%.' .. value .. '$') ~= nil then
+      return true
+    end
+  end
+  return false
+end
+
 vim.api.nvim_create_autocmd('BufWritePost', {
   callback = function(args)
-    vim.cmd('silent !biome check --write ' .. args.file)
+    if matchWithExtensions(args.file, biomeExtensions) then
+      vim.cmd('silent !biome check --write ' .. args.file)
+      vim.notify 'Formatted with biome'
+    end
   end,
 })
