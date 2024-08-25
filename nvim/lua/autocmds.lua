@@ -26,7 +26,7 @@ local group = vim.api.nvim_create_augroup('CustomWriteMessage', { clear = true }
 vim.api.nvim_create_autocmd('BufWritePost', {
   group = group,
   callback = function()
-    vim.notify(default_encouragements[math.random(#default_encouragements)], 'success', { title = 'File saved' })
+    vim.notify(default_encouragements[math.random(#default_encouragements)])
   end,
 })
 
