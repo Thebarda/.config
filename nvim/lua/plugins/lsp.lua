@@ -125,5 +125,7 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
+
+    require('lspconfig').biome.setup()
   end,
 }
