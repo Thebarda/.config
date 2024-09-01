@@ -33,9 +33,13 @@ require('which-key').add {
     end,
     desc = 'Search in current file',
   },
-  { '<leader>sP', '<cmd>lua require("spectre").open_file_search({select_word=true})<cr>', desc = 'Search and replace in current file' },
+  {
+    '<leader>sP',
+    '<cmd>lua require("grug-far").with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })<cr>',
+    desc = 'Search and replace in current file',
+  },
   { '<leader>sg', '<cmd>Telescope live_grep_args winblend=20<CR>', desc = 'Live grep' },
-  { '<leader>sh', '<cmd>lua require("spectre").toggle()<CR>', desc = 'Global find and replace' },
+  { '<leader>sh', '<cmd>lua require("grug-far").with_visual_selection()<CR>', desc = 'Global find and replace' },
   { '<leader>sb', '<cmd>Telescope buffers winblend=20<CR>', desc = 'Search buffers' },
   {
     '<leader>sd',
