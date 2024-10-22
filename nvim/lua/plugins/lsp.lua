@@ -1,6 +1,6 @@
 return { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = 'VeryLazy',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
     { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
@@ -81,6 +81,7 @@ return { -- LSP Configuration & Plugins
 
     local servers = {
       vtsls = {},
+      biome = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -126,6 +127,6 @@ return { -- LSP Configuration & Plugins
       },
     }
 
-    require('lspconfig').biome.setup()
+    require('lspconfig').biome.setup {}
   end,
 }
