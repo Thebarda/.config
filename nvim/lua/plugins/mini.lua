@@ -11,31 +11,6 @@ return { -- Collection of various small independent plugins/modules
 
     require('mini.surround').setup()
 
-    local animate = require 'mini.animate'
-    animate.setup {
-      close = {
-        enable = false,
-      },
-      open = {
-        enable = false,
-      },
-      resize = {
-        enable = false,
-      },
-      scroll = {
-        enable = false,
-      },
-      cursor = {
-        enable = true,
-        timing = animate.gen_timing.linear { duration = 130, unit = 'total' },
-        path = animate.gen_path.line {
-          predicate = function()
-            return true
-          end,
-        },
-      },
-    }
-
     require('mini.cursorword').setup()
 
     require('mini.move').setup {
