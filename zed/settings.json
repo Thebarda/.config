@@ -7,77 +7,65 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "auto_update_extensions": {
+    "biome": false
+  },
+  "features": {
+    "inline_completion_provider": "none"
+  },
   "base_keymap": "VSCode",
-  "theme": "Gruvbox Dark",
+  "theme": "Gruvbox Dark Hard",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  "vim_mode": false,
+  "vim_mode": true,
   "ui_font_size": 14,
   "buffer_font_size": 14,
   "terminal": {
-    "font_size": 14
+    "font_size": 13,
+    "font_family": "Hack Nerd Font Mono",
+    "line_height": "standard"
   },
-  "languages": {
-    "JavaScript": {
-      "format_on_save": {
-        "external": {
-          "command": "eslint",
-          "arguments": ["--fix", "{buffer_path}"]
-        }
-      },
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
-    },
-    "TypeScript": {
-      "format_on_save": {
-        "external": {
-          "command": "eslint",
-          "arguments": ["--fix", "{buffer_path}"]
-        }
-      },
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
-    },
-    "TSX": {
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      },
-      "format_on_save": {
-        "external": {
-          "command": "eslint",
-          "arguments": ["--fix", "{buffer_path}"]
-        }
-      }
-    }
-  },
-  "format_on_save": "on",
   "inlay_hints": {
     "enabled": true,
-    "show_type_hints": true,
-    "show_parameter_hints": true,
+    "show_type_hints": false,
+    "show_parameter_hints": false,
     "show_other_hints": true,
     "edit_debounce_ms": 700,
     "scroll_debounce_ms": 50
   },
-  "experimental.theme_overrides": {
-    "background.appearance": "blurred",
-    "background": "#4c464290",
-    "editor.background": "#00000040",
-    "editor.gutter.background": "#00000040",
-    "tab_bar.background": "#00000040",
-    "terminal.background": "#00000040",
-    "toolbar.background": "#00000040",
-    "tab.active_background": "#28282820",
-    "tab.inactive_background": "#00000000",
-    "status_bar.background": "#00000040",
-    "title_bar.background": "#00000040",
-    "panel.background": "#00000040",
-    "border.variant": "#00000000",
-    "scrollbar.track.border": "#00000000",
-    "editor.active_line.background": "#00000000"
+  "formatter": {
+    "language_server": {
+      "name": "biome"
+    }
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "indent_guides": {
+    "background_coloring": "indent_aware"
+  },
+  "code_actions_on_format": {
+    "source.fixAll.biome": true,
+    "source.organizeImports.biome": true
+  },
+  "language_servers": [
+    "!typescript-language-server",
+    "!eslint",
+    "!prettier",
+    "!phpactor",
+    "intelephense",
+    "...",
+    "biome"
+  ],
+  "file_types": {
+    "po": [
+      "po"
+    ]
+  },
+  "prettier": {
+    "allowed": false
   }
 }

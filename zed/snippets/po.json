@@ -1,0 +1,7 @@
+{
+  "Add translation": {
+    "prefix": "msg",
+    "body": "msgid \"$1\"\nmsgstr\"$0\"\n",
+    "description": "Add a translation"
+  }
+}

@@ -1,0 +1,27 @@
+[
+	{
+		"context": "vim_mode == visual",
+		"bindings": {
+			"shift-s": [
+				"vim::PushOperator",
+				{
+					"AddSurrounds": {}
+				}
+			]
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"ctrl-r": "editor::Rename",
+			"ctrl-s": ["task::Spawn", { "task_name": "Lint file" }]
+		}
+	},
+	{
+		"context": "Pane",
+		"bindings": {
+			"cmd-e": "pane::TogglePinTab",
+			"a": ["project_panel::NewFile"]
+		}
+	}
+]
