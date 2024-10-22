@@ -41,6 +41,14 @@ local matchWithExtensions = function(path, extensions)
   return false
 end
 
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    if #vim.fn.argv() >= 1 then
+      vim.cmd 'Neotree'
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd('BufWritePost', {
   callback = function(args)
     if matchWithExtensions(args.file, biomeExtensions) then
