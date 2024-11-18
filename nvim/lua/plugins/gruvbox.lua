@@ -10,6 +10,7 @@ return {
     g.gruvbox_material_visual = 'blue background'
     g.gruvbox_material_current_word = 'underline'
     g.gruvbox_material_diagnostic_virtual_text = 'highlighted'
+    g.gruvbox_material_float_style = 'dim'
     vim.cmd.colorscheme 'gruvbox-material'
   end,
 }

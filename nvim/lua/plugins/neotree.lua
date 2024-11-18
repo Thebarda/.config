@@ -323,8 +323,6 @@ return {
       },
     }
 
-    vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
-
     local normalNC = vim.api.nvim_get_hl(0, { name = 'NormalNC' })
 
     vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = 'NONE', ctermbg = 'NONE' })

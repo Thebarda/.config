@@ -44,7 +44,7 @@ end
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     if #vim.fn.argv() >= 1 then
-      vim.cmd 'Neotree'
+      vim.cmd 'Neotree show position=float'
     end
   end,
 })
