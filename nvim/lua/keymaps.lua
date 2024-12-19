@@ -4,7 +4,8 @@ local opts = { noremap = true, silent = true }
 
 require('which-key').add {
   mode = { 'n', 'v' },
-  { '<leader>t', '<cmd>Neotree position=float<CR>', desc = 'Open Neotree' },
+  { ':f', '<cmd>Neotree<CR>' },
+  { '<leader>f', '<cmd>Neotree<CR>', desc = 'Open Neotree' },
   { '<leader>l', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
   { '<leader>ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
   { '<leader>lD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
@@ -28,11 +29,11 @@ require('which-key').add {
     desc = 'Find file',
   },
   {
-    '<leader>sP',
+    '<leader>sh',
     '<cmd>lua require("grug-far").with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })<cr>',
     desc = 'Search and replace in current file',
   },
-  { '<leader>sh', '<cmd>lua require("grug-far").with_visual_selection()<CR>', desc = 'Global find and replace' },
+  { '<leader>sH', '<cmd>lua require("grug-far").with_visual_selection()<CR>', desc = 'Global find and replace' },
   { '<leader>sb', '<cmd>Telescope buffers winblend=20<CR>', desc = 'Search buffers' },
   {
     '<leader>sd',
