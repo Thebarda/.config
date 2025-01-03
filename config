@@ -1,0 +1,16 @@
+theme = gruvbox-material
+window-padding-balance = true 
+window-save-state = always
+macos-titlebar-style=transparent
+copy-on-select = clipboard
+cursor-color = #f5be27
+background-opacity = 0.9
+background = #090909
+background-blur-radius = 15
+font-size = 14
+font-family-bold = Operator Mono Medium
+font-family-italic = Operator Mono Book Italic
+font-family-bold-italic = Operator Mono Medium Italic
+font-family = Hack Nerd Font
+font-thicken
+cursor-style = block
