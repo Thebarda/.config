@@ -240,6 +240,7 @@ return {
             ['o'] = 'system_open',
             ['c'] = 'cypress_run',
             ['C'] = 'cypress_run_update',
+            ['t'] = 'open_terminal',
           },
           fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
             ['<down>'] = 'move_cursor_down',
@@ -251,6 +252,12 @@ return {
         },
 
         commands = {
+          open_terminal = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_id()
+
+            Snacks.terminal.toggle(nil, { cwd = path })
+          end,
           cypress_run_update = function(state)
             local node = state.tree:get_node()
             local path = node:get_id()
@@ -260,16 +267,9 @@ return {
               return
             end
 
-            local Terminal = require('toggleterm.terminal').Terminal
-
-            local term = Terminal:new {
-              cmd = 'pnpm cypress:run --env updateSnapshots=true --spec ' .. path,
-              dir = vim.uv.cwd(),
-              direction = 'horizontal',
-            }
+            Snacks.terminal.get('pnpm cypress:run --env updateSnapshots=true --spec ' .. path)
 
             vim.notify('Running cypress for ' .. path)
-            term:open()
           end,
           cypress_run = function(state)
             local node = state.tree:get_node()
@@ -280,16 +280,9 @@ return {
               return
             end
 
-            local Terminal = require('toggleterm.terminal').Terminal
-
-            local term = Terminal:new {
-              cmd = 'pnpm cypress:run --spec ' .. path,
-              dir = vim.uv.cwd(),
-              direction = 'horizontal',
-            }
+            Snacks.terminal.get('pnpm cypress:run --spec ' .. path)
 
             vim.notify('Running cypress for ' .. path)
-            term:open()
           end,
           system_open = function(state)
             local OS = require('utils').getOS()
