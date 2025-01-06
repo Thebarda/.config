@@ -16,29 +16,12 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   opts = function()
     local defaultColor = { bg = 'NONE', fg = 'NONE', gui = 'NONE' }
-    local custom_gruvbox = require 'lualine.themes.gruvbox-material'
-    local modes = { 'normal', 'command', 'insert', 'inactive', 'replace', 'terminal', 'visual' }
-
-    for _, mode in ipairs(modes) do
-      custom_gruvbox[mode].c.bg = 'NONE'
-    end
-
-    local sections = { 'b', 'y' }
-    for _, section in ipairs(sections) do
-      custom_gruvbox.normal[section] = { fg = colors.fg1, bg = colors.color4 }
-      custom_gruvbox.insert[section] = { fg = colors.fg1, bg = colors.color6 }
-      custom_gruvbox.command[section] = { fg = colors.fg1, bg = colors.color5 }
-      custom_gruvbox.inactive[section] = { fg = colors.fg2, bg = colors.color2 }
-      custom_gruvbox.replace[section] = { fg = colors.fg1, bg = colors.color7 }
-      custom_gruvbox.terminal[section] = { fg = colors.fg1, bg = colors.color8 }
-      custom_gruvbox.visual[section] = { fg = colors.fg1, bg = colors.color9 }
-    end
 
     return {
       options = {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
-        theme = custom_gruvbox,
+        theme = 'auto',
         disabled_filetypes = {
           statusline = {
             'dashboard',

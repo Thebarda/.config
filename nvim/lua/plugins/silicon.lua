@@ -4,7 +4,7 @@ return {
   opts = {
     disable_defaults = true,
     theme = 'gruvbox-dark',
-    font = 'Hack Nerd Font=16',
+    font = 'Iosevka Regular=16',
     background = '#db9532',
     language = function()
       return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ':e')
