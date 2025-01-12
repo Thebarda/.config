@@ -3,6 +3,9 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    win = {
+      backdrop = 100,
+    },
     dim = { enabled = true },
     bigfile = { enabled = true },
     dashboard = {
