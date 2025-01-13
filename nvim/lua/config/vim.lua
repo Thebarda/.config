@@ -72,7 +72,7 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.expandtab = true
-vim.o.guifont = 'Operator Mono Book,Hack Nerd Font'
+vim.o.guifont = 'Iosevka Term Regular,Hack Nerd Font'
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -81,10 +81,7 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+vim.api.nvim_set_hl(0, 'NeoTreeNormal', { bg = '#212121', ctermbg = 'NONE' })
+vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', { bg = '#212121', ctermbg = 'NONE' })
+vim.api.nvim_set_hl(0, 'NeoTreeFloatBorder', { bg = '#212121', ctermbg = 'NONE' })
+vim.api.nvim_set_hl(0, 'NeoTreeFloatTitle', { bg = '#994444', ctermbg = 'NONE' })

@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   callback = function(args)
     if matchWithExtensions(args.file, biomeExtensions) then
       vim.cmd('silent !biome check --write ' .. args.file)
-      vim.notify 'Formatted with biome'
+      vim.notify 'Formatted by biome'
     end
   end,
 })

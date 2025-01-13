@@ -3,10 +3,22 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    win = {
-      backdrop = 100,
+    dim = {
+      enabled = true,
+      scope = {
+        min_size = 2,
+        max_size = 50,
+        siblings = true,
+      },
+      animate = {
+        enabled = vim.fn.has 'nvim-0.10' == 1,
+        easing = 'outQuad',
+        duration = {
+          step = 20, -- ms per step
+          total = 300, -- maximum duration
+        },
+      },
     },
-    dim = { enabled = true },
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,

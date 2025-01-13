@@ -4,8 +4,7 @@ local opts = { noremap = true, silent = true }
 
 require('which-key').add {
   mode = { 'n', 'v' },
-  { ':f', '<cmd>Neotree<CR>' },
-  { '<leader>f', '<cmd>Neotree<CR>', desc = 'Open Neotree' },
+  { '<leader>e', '<cmd>Neotree<CR>' },
   { '<leader>l', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
   { '<leader>ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
   { '<leader>lD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
