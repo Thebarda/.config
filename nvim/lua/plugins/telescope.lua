@@ -46,7 +46,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         project = {
           on_project_selected = function(prompt_bufnr)
             project_actions.change_working_directory(prompt_bufnr, false)
-            vim.cmd 'Neotree position=float'
+            vim.cmd 'lua Snacks.explorer()'
           end,
         },
       },

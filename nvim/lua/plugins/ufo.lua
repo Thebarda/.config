@@ -75,10 +75,6 @@ return {
       close_fold_kinds_for_ft = {},
       preview = {},
       provider_selector = function(bufnr, filetype, buftype)
-        if filetype == 'neotree' then
-          return ''
-        end
-
         return 'treesitter'
       end,
     }

@@ -3,6 +3,17 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    picker = {
+      enabled = true,
+      sources = {
+        explorer = {
+          layout = { preset = 'default', preview = true },
+        },
+      },
+    },
+    explorer = {
+      enabled = true,
+    },
     dim = {
       enabled = true,
       scope = {

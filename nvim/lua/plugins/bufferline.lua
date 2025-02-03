@@ -8,14 +8,6 @@ return {
     require('bufferline').setup {
       options = {
         mode = 'buffers',
-        offsets = {
-          {
-            filetype = 'neo-tree',
-            text = 'Neo Tree',
-            separator = true,
-            text_align = 'center',
-          },
-        },
         themable = true,
         diagnostics = 'nvim_lsp',
         diagnostics_indicator = function(count, level, diagnostics_dict, context)

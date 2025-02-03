@@ -28,7 +28,6 @@ return {
             'alpha',
             'toggleterm',
             'TelescopePrompt',
-            'neo-tree',
             'help',
             'lazy',
             'qf',
@@ -71,7 +70,7 @@ return {
         },
       },
 
-      extensions = { 'lazy', 'toggleterm', 'mason', 'neo-tree', 'trouble' },
+      extensions = { 'lazy', 'toggleterm', 'mason', 'trouble' },
     }
   end,
 }

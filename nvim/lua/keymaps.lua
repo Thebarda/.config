@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 
 require('which-key').add {
   mode = { 'n', 'v' },
-  { '<leader>e', '<cmd>Neotree<CR>' },
+  { '<leader>e', '<cmd>lua Snacks.explorer()<CR>' },
   { '<leader>l', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
   { '<leader>ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
   { '<leader>lD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
@@ -23,7 +23,7 @@ require('which-key').add {
   {
     '<leader>sf',
     function()
-      require('telescope.builtin').find_files { winblend = 20 }
+      Snacks.picker.files()
     end,
     desc = 'Find file',
   },
@@ -33,11 +33,17 @@ require('which-key').add {
     desc = 'Search and replace in current file',
   },
   { '<leader>sH', '<cmd>lua require("grug-far").with_visual_selection()<CR>', desc = 'Global find and replace' },
-  { '<leader>sb', '<cmd>Telescope buffers winblend=20<CR>', desc = 'Search buffers' },
+  {
+    '<leader>sb',
+    function()
+      Snacks.picker.buffers()
+    end,
+    desc = 'Search buffers',
+  },
   {
     '<leader>sd',
     function()
-      require('telescope.builtin').diagnostics { bufnr = 0 }
+      Snacks.picker.diagnostics()
     end,
     desc = 'Search diagnostics',
   },
