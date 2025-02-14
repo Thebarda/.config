@@ -47,6 +47,11 @@ require('which-key').add {
     end,
     desc = 'Search diagnostics',
   },
+  {
+    '<esc><esc>',
+    '<cmd>nohlsearch<CR>',
+    desc = 'Discard search',
+  },
 }
 
 vim.keymap.set('n', ';', function()

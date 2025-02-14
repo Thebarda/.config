@@ -3,11 +3,21 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    lazygit = {
+      enabled = true,
+    },
     picker = {
       enabled = true,
       sources = {
         explorer = {
           layout = { preset = 'default', preview = true },
+          auto_close = true,
+          hidden = true,
+          follow = true,
+          focus = 'input',
+        },
+        files = {
+          hidden = true,
         },
       },
     },

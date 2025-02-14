@@ -44,7 +44,7 @@ end
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     if #vim.fn.argv() >= 1 then
-      vim.cmd 'lua Snacks.explorer()'
+      vim.cmd 'lua Snacks.picker.files()'
     end
   end,
 })
