@@ -2,26 +2,25 @@
 	{
 		"context": "vim_mode == visual",
 		"bindings": {
-			"shift-s": [
-				"vim::PushOperator",
-				{
-					"AddSurrounds": {}
-				}
-			]
+			"shift-s": ["vim::PushAddSurrounds", {}]
 		}
 	},
 	{
 		"context": "Editor",
 		"bindings": {
-			"ctrl-r": "editor::Rename",
-			"ctrl-s": ["task::Spawn", { "task_name": "Lint file" }]
+			"ctrl-r": "editor::Rename"
 		}
 	},
 	{
 		"context": "Pane",
 		"bindings": {
-			"cmd-e": "pane::TogglePinTab",
-			"a": ["project_panel::NewFile"]
+			"cmd-e": "pane::TogglePinTab"
+		}
+	},
+	{
+		"context": "workspace",
+		"bindings": {
+			"a": "workspace::NewFile"
 		}
 	}
 ]
