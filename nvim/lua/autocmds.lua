@@ -30,8 +30,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   end,
 })
 
-local biomeExtensions = { 'js', 'jsx', 'tsx', 'ts', 'css' }
-
 local matchWithExtensions = function(path, extensions)
   for _, value in ipairs(extensions) do
     if string.match(path, '%.' .. value .. '$') ~= nil then
@@ -45,15 +43,6 @@ vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     if #vim.fn.argv() >= 1 then
       vim.cmd 'lua Snacks.picker.files()'
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd('BufWritePost', {
-  callback = function(args)
-    if matchWithExtensions(args.file, biomeExtensions) then
-      vim.cmd('silent !biome check --write ' .. args.file)
-      vim.notify 'Formatted by biome'
     end
   end,
 })

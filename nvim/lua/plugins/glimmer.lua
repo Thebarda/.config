@@ -5,7 +5,6 @@ return {
   opts = {
     enabled = true,
     default_animation = 'rainbow',
-    transparency_color = '#000000',
     overwrite = {
       search = {
         enabled = true,

@@ -14,7 +14,9 @@ return {
           auto_close = true,
           hidden = true,
           follow = true,
+          ignored = true,
           focus = 'input',
+          exclude = { 'node_modules' },
         },
         files = {
           hidden = true,
@@ -104,13 +106,21 @@ return {
       },
     },
     indent = {
-      enabled = 'true',
+      enabled = true,
     },
     scope = {
       enabled = true,
     },
     scroll = {
       enabled = true,
+    },
+    terminal = {
+      enabled = true,
+      win = {
+        border = 'left',
+        position = 'right',
+        width = 0.45,
+      },
     },
   },
   keys = {

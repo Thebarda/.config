@@ -20,6 +20,7 @@ return { -- Autoformat
       typescript = { 'biome' },
       javascriptreact = { 'biome' },
       typescriptreact = { 'biome' },
+      json = { 'biome' },
     },
     format_on_save = {
       -- I recommend these options. See :help conform.format for details.
