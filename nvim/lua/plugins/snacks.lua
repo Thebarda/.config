@@ -116,11 +116,6 @@ return {
     },
     terminal = {
       enabled = true,
-      win = {
-        border = 'left',
-        position = 'right',
-        width = 0.45,
-      },
     },
   },
   keys = {
