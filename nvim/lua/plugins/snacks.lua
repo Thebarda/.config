@@ -46,7 +46,14 @@ return {
     dashboard = {
       enabled = true,
       sections = {
-        { section = 'header' },
+        {
+          section = 'terminal',
+          cmd = 'lolcat -a ~/.config/nvim/dashboard-header.txt',
+          indent = -5,
+          height = 8,
+          width = 69,
+          padding = 1,
+        },
         { section = 'keys', gap = 1, padding = 1 },
         { pane = 2, icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
         { pane = 2, icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
@@ -65,13 +72,7 @@ return {
         { section = 'startup' },
       },
       preset = {
-        header = [[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+
         keys = {
           { icon = ' ', key = 'p', desc = 'Projects', action = ':Telescope project' },
           { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
@@ -117,8 +118,18 @@ return {
     terminal = {
       enabled = true,
     },
+    scratch = {
+      enabled = true,
+    },
   },
   keys = {
+    {
+      '<leader>sg',
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = 'Search with grep',
+    },
     {
       '<leader>un',
       function()
@@ -155,6 +166,13 @@ return {
       desc = 'Git Browse',
     },
     {
+      '<leader>gd',
+      function()
+        Snacks.picker.git_diff()
+      end,
+      desc = 'Git diff',
+    },
+    {
       '<leader>gf',
       function()
         Snacks.lazygit.log_file()
@@ -189,7 +207,13 @@ return {
       end,
       desc = 'Open Terminal',
     },
-
+    {
+      '<leader>.',
+      function()
+        Snacks.scratch()
+      end,
+      desc = 'Toggle Scratch Buffer',
+    },
     {
       '<c-_>',
       function()
