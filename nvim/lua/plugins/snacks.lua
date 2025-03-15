@@ -48,13 +48,14 @@ return {
       sections = {
         {
           section = 'terminal',
-          cmd = 'lolcat -a ~/.config/nvim/dashboard-header.txt',
+          cmd = 'lolcat ~/.config/nvim/dashboard-header.txt',
           indent = -5,
           height = 8,
           width = 69,
           padding = 1,
         },
         { section = 'keys', gap = 1, padding = 1 },
+        { section = 'terminal', cmd = "curl -s 'wttr.in/Toulouse:Paris:Limoges:Helsinki?format=4'", pane = 2 },
         { pane = 2, icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
         { pane = 2, icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
         {
@@ -72,7 +73,6 @@ return {
         { section = 'startup' },
       },
       preset = {
-
         keys = {
           { icon = ' ', key = 'p', desc = 'Projects', action = ':Telescope project' },
           { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
@@ -108,6 +108,38 @@ return {
     },
     indent = {
       enabled = true,
+      hl = {
+        'SnacksIndent1',
+        'SnacksIndent2',
+        'SnacksIndent3',
+        'SnacksIndent4',
+        'SnacksIndent5',
+        'SnacksIndent6',
+        'SnacksIndent7',
+        'SnacksIndent8',
+      },
+      chunk = {
+        enabled = true,
+        only_current = false,
+        priority = 200,
+        hl = {
+          'SnacksIndent1',
+          'SnacksIndent2',
+          'SnacksIndent3',
+          'SnacksIndent4',
+          'SnacksIndent5',
+          'SnacksIndent6',
+          'SnacksIndent7',
+          'SnacksIndent8',
+        },
+        char = {
+          corner_top = '╭',
+          corner_bottom = '╰',
+          horizontal = '─',
+          vertical = '│',
+          arrow = '─',
+        },
+      },
     },
     scope = {
       enabled = true,

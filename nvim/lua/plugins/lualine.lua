@@ -1,16 +1,3 @@
-local colors = {
-  fg1 = '#282828',
-  color2 = '#504945',
-  fg2 = '#ddc7a1',
-  color3 = '#32302f',
-  color4 = '#a89984',
-  color5 = '#7daea3',
-  color6 = '#a9b665',
-  color7 = '#d8a657',
-  color8 = '#d3869b',
-  color9 = '#ea6962',
-}
-
 return {
   'nvim-lualine/lualine.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -18,6 +5,7 @@ return {
     local defaultColor = { bg = 'NONE', fg = 'NONE', gui = 'NONE' }
 
     return {
+      theme = 'tokyonight',
       options = {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
@@ -52,7 +40,7 @@ return {
           { 'filename', padding = { left = 1, right = 1 }, color = defaultColor },
         },
         lualine_x = {
-          { 'diff' },
+          { 'diff', color = defaultColor },
         },
         lualine_y = {
           {
@@ -69,8 +57,7 @@ return {
           },
         },
       },
-
-      extensions = { 'lazy', 'toggleterm', 'mason', 'trouble' },
+      extensions = { 'lazy' },
     }
   end,
 }
