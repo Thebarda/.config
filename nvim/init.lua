@@ -17,5 +17,6 @@ require('lazy').setup {
   },
 }
 
+require 'lsp'
 require 'autocmds'
 require 'keymaps'

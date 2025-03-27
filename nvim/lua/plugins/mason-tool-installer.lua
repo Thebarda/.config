@@ -19,8 +19,6 @@ return {
         'html-lsp',
         'graphql-language-service-cli',
         'fixjson',
-        'eslint_d',
-        'eslint-lsp',
         'dockerfile-language-server',
         'docker-compose-language-service',
         'css-lsp',
