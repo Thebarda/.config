@@ -1,0 +1,18 @@
+{
+	"clg": {
+		"prefix": "clg",
+		"body": "console.log(${0})"
+	},
+	"cle": {
+		"prefix": "cle",
+		"body": "console.error(${0})"
+	},
+	"clw": {
+		"prefix": "clw",
+		"body": "console.warn(${0})"
+	},
+	"fn": {
+		"prefix": "fn",
+		"body": "const ${1} = (${2}) => {\n${0}\n}"
+	}
+}

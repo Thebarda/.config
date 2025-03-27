@@ -46,3 +46,24 @@ vim.api.nvim_create_autocmd('VimEnter', {
     end
   end,
 })
+
+-- Define the maximum file size (in bytes)
+local max_file_size = 1000000 -- 1 MB
+
+-- Function to check file size
+local function should_enable_diagnostics()
+  local file_size = vim.loop.fs_stat(vim.api.nvim_buf_get_name(0))
+  return file_size and file_size.size <= max_file_size
+end
+
+-- Autocommand to disable diagnostics for large files
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*',
+  callback = function()
+    if not should_enable_diagnostics() then
+      if vim.lsp.diagnostic.clear ~= nil then
+        vim.lsp.diagnostic.clear(0)
+      end
+    end
+  end,
+})

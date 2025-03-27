@@ -1,0 +1,50 @@
+{
+	"clg": {
+		"prefix": "clg",
+		"body": "console.log(${0})"
+	},
+	"cle": {
+		"prefix": "cle",
+		"body": "console.error(${0})"
+	},
+	"clw": {
+		"prefix": "clw",
+		"body": "console.warn(${0})"
+	},
+	"fnt": {
+		"prefix": "fnt",
+		"body": "const ${1} = (${2}): ${3:void} => {\n${0}\n}"
+	},
+	"comp": {
+		"prefix": "comp",
+		"body": "const ${1} = (): JSX.Element => {\n${0}\n\nreturn <div />\n}\n\nexport default ${1}"
+	},
+	"compprops": {
+		"prefix": "compprops",
+		"body": "interface Props {\n\n}\n\nconst ${1} = ({  }: Props): JSX.Element => {\n${0}\n\nreturn <div />\n}\n\nexport default ${1}"
+	},
+	"hook": {
+		"prefix": "hook",
+		"body": "const use${1} = (): ${2:void} => {\n${0}\n}"
+	},
+	"hookprops": {
+		"prefix": "hookprops",
+		"body": "interface Props {\n\n}\n\nconst use${1} = ({  }: Props): ${2:void} => {\n${0}\n}"
+	},
+	"useState": {
+		"prefix": "useState",
+		"body": "const [${1}, ${2}] = useState(${0: null})"
+	},
+	"useRef": {
+		"prefix": "useRef",
+		"body": "const ${1} = useRef(${0:null})"
+	},
+	"useMemo": {
+		"prefix": "useMemo",
+		"body": "const ${1} = useMemo(() => ${0}, [${2}])"
+	},
+	"useCallback": {
+		"prefix": "useCallback",
+		"body": "const ${1} = useCallback(() => {\n${0}\n}, [${2}])"
+	}
+}

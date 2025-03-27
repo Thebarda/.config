@@ -16,9 +16,7 @@ return { -- Autoformat
     notify_on_error = true,
     formatters_by_ft = {
       lua = { 'stylua' },
-      javascipt = { 'biome' },
       typescript = { 'biome' },
-      javascriptreact = { 'biome' },
       typescriptreact = { 'biome' },
       json = { 'biome' },
     },
