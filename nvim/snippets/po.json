@@ -1,6 +1,6 @@
 {
 	"msg": {
 		"prefix": "msg",
-		"body": "msgid \"${1}\"\nmsgsgtr \"${0}\""
+		"body": "msgid \"${1}\"\nmsgstr \"${0}\""
 	}
 }
