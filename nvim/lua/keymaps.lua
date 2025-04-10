@@ -47,6 +47,21 @@ require('which-key').add {
     end,
     desc = 'Search diagnostics',
   },
+  { '<leader>S', group = 'Scratch', icon = { color = 'pink' } },
+  {
+    '<leader>S.',
+    function()
+      Snacks.scratch()
+    end,
+    desc = 'Toggle scratch buffer',
+  },
+  {
+    '<leader>SS',
+    function()
+      Snacks.scratch.select()
+    end,
+    desc = 'Select scratch buffer',
+  },
   {
     '<esc><esc>',
     '<cmd>nohlsearch<CR>',
