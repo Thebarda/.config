@@ -42,6 +42,6 @@ vim.lsp.config['biome'] = {
 
 vim.lsp.enable { 'luals', 'vtsls', 'biome' }
 
-vim.diagnostic.config { virtual_text = true }
+vim.diagnostic.config { virtual_lines = { current_line = true }, underline = true, update_in_insert = true, signs = true, severity_sort = true }
 
 require('mason').setup()
