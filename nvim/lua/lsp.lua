@@ -49,6 +49,4 @@ vim.lsp.config['tailwindcssls'] = {
 
 vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'tailwindcssls' }
 
-vim.diagnostic.config { virtual_text = { current_line = true }, underline = true, update_in_insert = true, signs = true, severity_sort = true }
-
 require('mason').setup()
