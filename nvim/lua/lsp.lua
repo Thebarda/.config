@@ -11,7 +11,6 @@ vim.lsp.config['luals'] = {
         globals = { 'vim' },
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file('', true),
       },
     },
@@ -39,8 +38,16 @@ vim.lsp.config['biome'] = {
   },
   single_file_support = false,
 }
+vim.lsp.config['rust_analyzer'] = {
+  filetypes = { 'rust' },
+  cmd = { 'rust-analyzer' },
+}
+vim.lsp.config['tailwindcssls'] = {
+  filetypes = { 'javascriptreact', 'typescriptreact', 'html' },
+  cmd = { 'tailwindcss-language-server', '--stdio' },
+}
 
-vim.lsp.enable { 'luals', 'vtsls', 'biome' }
+vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'tailwindcssls' }
 
 vim.diagnostic.config { virtual_text = { current_line = true }, underline = true, update_in_insert = true, signs = true, severity_sort = true }
 
