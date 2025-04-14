@@ -42,11 +42,7 @@ vim.lsp.config['rust_analyzer'] = {
   filetypes = { 'rust' },
   cmd = { 'rust-analyzer' },
 }
-vim.lsp.config['tailwindcssls'] = {
-  filetypes = { 'javascriptreact', 'typescriptreact', 'html' },
-  cmd = { 'tailwindcss-language-server', '--stdio' },
-}
 
-vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'tailwindcssls' }
+vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer' }
 
 require('mason').setup()
