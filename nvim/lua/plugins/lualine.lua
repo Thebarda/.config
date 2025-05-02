@@ -3,18 +3,17 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   opts = function()
     return {
-      theme = 'tokyonight',
       options = {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         theme = {
           normal = {
-            a = { bg = '#82aaff', fg = '#212121', gui = 'bold' },
-            b = { bg = '#1e2030', fg = '#82aaff' },
+            a = { bg = '#fbcb97', fg = '#212121', gui = 'bold' },
+            b = { bg = '#1e2030', fg = '#fbcb97' },
             c = { bg = 'none', gui = 'bold' },
             x = { bg = 'none', gui = 'bold' },
-            y = { bg = '#1e2030', fg = '#82aaff' },
-            z = { bg = '#82aaff', fg = '#212121', gui = 'bold' },
+            y = { bg = '#1e2030', fg = '#fbcb97' },
+            z = { bg = '#fbcb97', fg = '#212121', gui = 'bold' },
           },
           insert = {
             a = { bg = '#c3e88d', fg = '#212121', gui = 'bold' },
