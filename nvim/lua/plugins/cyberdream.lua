@@ -13,7 +13,5 @@ return {
         NormalNC = { fg = '#dddddd', bg = 'NONE' },
       },
     }
-
-    vim.cmd 'colorscheme cyberdream'
   end,
 }
