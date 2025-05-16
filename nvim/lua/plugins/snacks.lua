@@ -1,3 +1,5 @@
+local last_grep_search = ''
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
@@ -158,7 +160,14 @@ return {
     {
       '<leader>sg',
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep {
+          on_close = function(picker)
+            last_grep_search = picker.input.filter.search
+          end,
+          on_show = function(picker)
+            picker.input:set(nil, last_grep_search)
+          end,
+        }
       end,
       desc = 'Search with grep',
     },
