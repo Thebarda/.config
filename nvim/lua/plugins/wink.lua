@@ -8,6 +8,7 @@ return {
   build = 'cargo build --release',
   dependencies = {
     { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    'jdrupal-dev/css-vars.nvim',
     {
       'rafamadriz/friendly-snippets',
       config = function()
@@ -62,6 +63,15 @@ return {
     signature = { enabled = true },
     completion = {
       ghost_text = { enabled = true },
+    },
+    providers = {
+      css_vars = {
+        name = 'css-vars',
+        module = 'css-vars.blink',
+        opts = {
+          search_extensions = { '.js', '.ts', '.jsx', '.tsx' },
+        },
+      },
     },
   },
   opts_extend = { 'sources.default' },
