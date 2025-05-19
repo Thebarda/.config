@@ -110,3 +110,19 @@ vim.api.nvim_create_autocmd('LspProgress', {
     })
   end,
 })
+
+vim.diagnostic.config {
+  underline = true,
+  float = { focusable = true, source = 'if_many', scope = 'cursor', border = 'rounded' },
+  severity_sort = true,
+  jump = {
+    float = true,
+  },
+}
+
+-- Show errors and warnings in a floating window
+vim.api.nvim_create_autocmd('CursorHold', {
+  callback = function()
+    vim.diagnostic.open_float(nil)
+  end,
+})
