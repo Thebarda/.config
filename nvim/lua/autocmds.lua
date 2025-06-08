@@ -126,3 +126,11 @@ vim.api.nvim_create_autocmd('CursorHold', {
     vim.diagnostic.open_float(nil)
   end,
 })
+
+vim.api.nvim_create_autocmd('CursorMoved', {
+  callback = function()
+    if vim.g.is_zz_enabled then
+      vim.cmd 'norm! zz'
+    end
+  end,
+})
