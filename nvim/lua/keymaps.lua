@@ -70,17 +70,9 @@ require('which-key').add {
   {
     '<leader>z',
     desc = 'Toggle center mode',
-    function()
-      vim.g.is_zz_enabled = not vim.g.is_zz_enabled
-      vim.notify('Center mode is ' .. (vim.g.is_zz_enabled and 'enabled' or 'disabled'))
-      if vim.g.is_zz_enabled then
-        vim.cmd 'norm! zz'
-      end
-    end,
+    '<cmd>ToggleCenterMode<CR>',
   },
 }
-
-vim.g.is_zz_enabled = false
 
 vim.keymap.set('n', ';', function()
   local vimCmdInput = Input({
