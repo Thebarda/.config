@@ -7,7 +7,7 @@ return {
         visual = '#a67ff3',
       },
       line_opacity = 0.28,
-      ignore_filetypes = { 'TelescopePrompt', 'Dashboard' },
+      ignore = { 'TelescopePrompt', 'Dashboard' },
     }
   end,
 }
