@@ -186,48 +186,6 @@ return {
       desc = 'Delete Buffer',
     },
     {
-      '<leader>gg',
-      function()
-        Snacks.lazygit()
-      end,
-      desc = 'Lazygit',
-    },
-    {
-      '<leader>gb',
-      function()
-        Snacks.git.blame_line()
-      end,
-      desc = 'Git Blame Line',
-    },
-    {
-      '<leader>gB',
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = 'Git Browse',
-    },
-    {
-      '<leader>gd',
-      function()
-        Snacks.picker.git_diff()
-      end,
-      desc = 'Git diff',
-    },
-    {
-      '<leader>gf',
-      function()
-        Snacks.lazygit.log_file()
-      end,
-      desc = 'Lazygit Current File History',
-    },
-    {
-      '<leader>gl',
-      function()
-        Snacks.lazygit.log()
-      end,
-      desc = 'Lazygit Log (cwd)',
-    },
-    {
       '<leader>cR',
       function()
         Snacks.rename.rename_file()
