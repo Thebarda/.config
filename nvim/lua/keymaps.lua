@@ -1,6 +1,4 @@
 local Input = require 'nui.input'
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 require('which-key').add {
   mode = { 'n', 'v' },
@@ -47,21 +45,6 @@ require('which-key').add {
     end,
     desc = 'Search diagnostics',
   },
-  { '<leader>S', group = 'Scratch', icon = { color = 'pink' } },
-  {
-    '<leader>S.',
-    function()
-      Snacks.scratch()
-    end,
-    desc = 'Toggle scratch buffer',
-  },
-  {
-    '<leader>SS',
-    function()
-      Snacks.scratch.select()
-    end,
-    desc = 'Select scratch buffer',
-  },
   {
     '<esc><esc>',
     '<cmd>nohlsearch<CR>',
@@ -71,6 +54,20 @@ require('which-key').add {
     '<leader>z',
     desc = 'Toggle center mode',
     '<cmd>ToggleCenterMode<CR>',
+  },
+  {
+    '<leader>.',
+    desc = 'Toggle scratchy',
+    function()
+      require('customs.scratchy').toggle()
+    end,
+  },
+  {
+    '<leader>t',
+    desc = 'Toggle terminal',
+    function()
+      require('customs.toggle-terminal').toggle()
+    end,
   },
 }
 

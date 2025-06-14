@@ -235,27 +235,6 @@ return {
       desc = 'Rename File',
     },
     {
-      '<leader>tt',
-      function()
-        Snacks.terminal.toggle()
-      end,
-      desc = 'Toggle Terminal',
-    },
-    {
-      '<leader>to',
-      function()
-        Snacks.terminal.open()
-      end,
-      desc = 'Open Terminal',
-    },
-    {
-      '<leader>.',
-      function()
-        Snacks.scratch()
-      end,
-      desc = 'Toggle Scratch Buffer',
-    },
-    {
       '<c-_>',
       function()
         Snacks.terminal()
