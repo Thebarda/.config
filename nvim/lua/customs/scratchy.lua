@@ -91,4 +91,8 @@ function M.toggle()
   end
 end
 
+function M.setup()
+  vim.notify 'hello from plugin'
+end
+
 return M

@@ -20,6 +20,3 @@ require('lazy').setup {
 require 'lsp'
 require 'autocmds'
 require 'keymaps'
-require 'customs.center-mode'
-require 'customs.scratchy'
-require 'customs.toggle-terminal'

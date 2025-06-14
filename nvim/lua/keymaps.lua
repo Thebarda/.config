@@ -53,20 +53,22 @@ require('which-key').add {
   {
     '<leader>z',
     desc = 'Toggle center mode',
-    '<cmd>ToggleCenterMode<CR>',
+    function()
+      Customs.center_mode.toggle()
+    end,
   },
   {
     '<leader>.',
     desc = 'Toggle scratchy',
     function()
-      require('customs.scratchy').toggle()
+      Customs.scratchy.toggle()
     end,
   },
   {
     '<leader>t',
     desc = 'Toggle terminal',
     function()
-      require('customs.toggle-terminal').toggle()
+      Customs.toggle_terminal.toggle()
     end,
   },
   {
