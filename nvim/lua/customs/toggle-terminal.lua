@@ -1,3 +1,5 @@
+local window_management = require 'customs.utils.window-manager'
+
 local M = {}
 
 local buf
@@ -30,9 +32,8 @@ local function change_win_based_on_mode(is_terminal)
 end
 
 local function unload_states()
-  api.nvim_buf_delete(buf, { force = true })
+  buf = window_management.close_window(buf)
   api.nvim_set_hl(0, 'FloatBorder', current_float_border_hl)
-  buf = nil
   win = nil
 end
 
@@ -76,22 +77,25 @@ end
 function M.open()
   buf = api.nvim_create_buf(false, true)
 
-  api.nvim_buf_set_lines(buf, 0, -1, false, {})
-
   local width = vim.o.columns
   local height = math.floor(vim.o.lines / 2)
   local row = height - 1
   local col = 0
 
-  win = api.nvim_open_win(buf, true, {
-    relative = 'editor',
-    width = width,
-    height = height - 2,
-    col = col,
-    row = row,
-    style = 'minimal',
+  local window_buffer_state = window_management.open_window {
+    is_listed = false,
+    is_scratch = true,
+    layout = {
+      width = width,
+      height = height - 2,
+      col = col,
+      row = row,
+    },
     border = 'rounded',
-  })
+  }
+
+  buf = window_buffer_state.buffer
+  win = window_buffer_state.window
 
   vim.cmd 'terminal'
   vim.cmd 'startinsert'
