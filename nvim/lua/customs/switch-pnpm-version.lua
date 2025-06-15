@@ -17,7 +17,7 @@ local function switchPNPM(version)
   if exit_code ~= 0 then
     vim.notify('Fail to switch to PNPM ' .. major_version)
   else
-    vim.notify('Successfully switched to PNPM ' .. major_version)
+    vim.notify('Switched to PNPM ' .. major_version)
   end
 end
 
