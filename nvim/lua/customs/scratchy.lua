@@ -1,3 +1,5 @@
+local window_management = require 'customs.utils.window-manager'
+
 local M = {}
 
 local function read_file_lines(path)
@@ -21,8 +23,7 @@ local function create_autocmd(win)
   vim.api.nvim_create_autocmd('WinClosed', {
     pattern = tostring(win), -- window ID as string
     callback = function()
-      vim.api.nvim_buf_delete(buf, { force = true })
-      buf = nil
+      buf = window_management.close_window(buf)
     end,
   })
 
@@ -40,11 +41,6 @@ local function create_autocmd(win)
 end
 
 function M.open()
-  -- Create a new scratch buffer
-  buf = vim.api.nvim_create_buf(false, false)
-
-  -- Set buffer lines (content)
-  vim.api.nvim_buf_set_name(buf, filename)
   local lines, err = read_file_lines(filename)
 
   if lines == nil or err ~= nil then
@@ -54,33 +50,35 @@ function M.open()
     lines = {}
   end
 
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-
   -- Calculate window size and position
   local width = math.floor(vim.o.columns / 2)
   local height = math.floor(vim.o.lines / 2)
   local row = math.floor((vim.o.lines - height) / 2 - 1)
   local col = math.floor((vim.o.columns - width) / 2)
 
-  -- Open the floating window
-  local win = vim.api.nvim_open_win(buf, true, {
-    relative = 'editor',
-    width = width,
-    height = height,
-    row = row,
-    col = col,
-    style = 'minimal',
-    border = 'rounded',
-    title = 'Scratch',
+  local window_buffer_state = window_management.open_window {
     title_pos = 'center',
-  })
+    title = 'Scratchy',
+    is_scratch = false,
+    is_listed = false,
+    border = 'rounded',
+    layout = {
+      width = width,
+      height = height,
+      row = row,
+      col = col,
+    },
+    filename = filename,
+    lines = lines,
+  }
 
-  create_autocmd(win)
+  buf = window_buffer_state.buffer
+
+  create_autocmd(window_buffer_state.window)
 end
 
 function M.close()
-  vim.api.nvim_buf_delete(buf, { force = true })
-  buf = nil
+  buf = window_management.close_window(buf)
 end
 
 function M.toggle()
