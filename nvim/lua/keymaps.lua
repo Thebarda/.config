@@ -117,6 +117,31 @@ require('which-key').add {
     end,
     desc = 'Lazygit Log (cwd)',
   },
+  {
+    '<leader>p',
+    desc = 'PNPM',
+  },
+  {
+    '<leader>p7',
+    desc = 'Switch to PNPM 7',
+    function()
+      Customs.switch_pnpm_version.switchTo7()
+    end,
+  },
+  {
+    '<leader>p8',
+    desc = 'Switch to PNPM 8',
+    function()
+      Customs.switch_pnpm_version.switchTo8()
+    end,
+  },
+  {
+    '<leader>p1',
+    desc = 'Switch to PNPM 10',
+    function()
+      Customs.switch_pnpm_version.switchTo10()
+    end,
+  },
 }
 
 vim.keymap.set('n', ';', function()
