@@ -55,8 +55,8 @@ function M.open()
   end
 
   -- Calculate window size and position
-  local width = math.floor(vim.o.columns / 2)
-  local height = math.floor(vim.o.lines / 2)
+  local width = math.floor(vim.o.columns / 1.5)
+  local height = math.floor(vim.o.lines / 1.5)
   local row = math.floor((vim.o.lines - height) / 2 - 1)
   local col = math.floor((vim.o.columns - width) / 2)
 
@@ -75,6 +75,7 @@ function M.open()
     filename = filename,
     lines = lines,
   }
+  vim.api.nvim_win_set_option(window_buffer_state.window, 'number', true)
 
   buf = window_buffer_state.buffer
 
