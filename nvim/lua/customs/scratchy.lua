@@ -15,12 +15,15 @@ local function read_file_lines(path)
   return lines
 end
 
-local filename = os.getenv 'HOME' .. '/.local/state/nvim/scratchy.txt'
+local filename = os.getenv 'HOME' .. '/.local/state/nvim/scratchy.md'
 
 local buf
 
 local function create_autocmd(win)
+  vim.api.nvim_create_augroup('CustomsScratchy', { clear = true })
+
   vim.api.nvim_create_autocmd('WinClosed', {
+    group = 'CustomsScratchy',
     pattern = tostring(win), -- window ID as string
     callback = function()
       buf = window_management.close_window(buf)
@@ -28,6 +31,7 @@ local function create_autocmd(win)
   })
 
   vim.api.nvim_create_autocmd('ModeChanged', {
+    group = 'CustomsScratchy',
     buffer = buf,
     callback = function()
       local mode = vim.api.nvim_get_mode().mode

@@ -38,12 +38,16 @@ local function unload_states()
 end
 
 local function create_autocmd()
+  api.nvim_create_augroup('CustomsToggleTerminal', { clear = true })
+
   api.nvim_create_autocmd('WinClosed', {
+    group = 'CustomsToggleTerminal',
     pattern = tostring(win), -- window ID as string
     callback = unload_states,
   })
 
   api.nvim_create_autocmd('ModeChanged', {
+    group = 'CustomsToggleTerminal',
     buffer = buf,
     callback = function()
       local mode = vim.api.nvim_get_mode().mode
