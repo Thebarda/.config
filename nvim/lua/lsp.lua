@@ -1,7 +1,7 @@
 vim.lsp.config['luals'] = {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
-  root_markers = { '.luarc.json', '.luarc.jsonc' },
+  root_markers = { '.luarc.json', '.luarc.jsonc', '.git' },
   settings = {
     Lua = {
       runtime = {
@@ -79,6 +79,12 @@ vim.lsp.config['cssls'] = {
   },
 }
 
-vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'cssvars', 'cssls' }
+vim.lsp.config['markdown'] = {
+  cmd = { 'marksman', 'markdown.mdx' },
+  filetypes = { 'markdown', 'markdown.mdx' },
+  root_markers = { '.marksman.toml', '.git' },
+}
+
+vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'cssvars', 'cssls', 'markdown' }
 
 require('mason').setup()
