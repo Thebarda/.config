@@ -79,8 +79,6 @@ local function create_keymap(col)
 end
 
 function M.open()
-  buf = api.nvim_create_buf(false, true)
-
   local width = vim.o.columns
   local height = math.floor(vim.o.lines / 2)
   local row = height - 1
@@ -103,6 +101,7 @@ function M.open()
 
   vim.cmd 'terminal'
   vim.cmd 'startinsert'
+  vim.api.nvim_buf_set_option(buf, 'buflisted', false)
 
   create_keymap(col)
   create_autocmd()
