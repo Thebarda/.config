@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+	"auto_update_extensions": {
+		"biome": false
+	},
 	"icon_theme": "Material Icon Theme",
 	"features": {
 		"edit_prediction_provider": "zed"
@@ -23,7 +26,10 @@
 	"terminal": {
 		"font_size": 13,
 		"font_family": "Hack Nerd Font Mono",
-		"line_height": "standard"
+		"line_height": "standard",
+		"shell": {
+			"program": "zsh"
+		}
 	},
 	"inlay_hints": {
 		"enabled": true,
@@ -104,13 +110,6 @@
 	"formatter": {
 		"language_server": {
 			"name": "biome"
-		}
-	},
-	"lsp": {
-		"biome": {
-			"settings": {
-				"require_config_file": true
-			}
 		}
 	}
 }
