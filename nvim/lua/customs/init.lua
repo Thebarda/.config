@@ -11,6 +11,7 @@ function M.setup()
   Customs.register('center_mode', require 'customs.center-mode')
   Customs.register('toggle_terminal', require 'customs.toggle-terminal')
   Customs.register('switch_pnpm_version', require 'customs.switch-pnpm-version')
+  Customs.register('yankee', require 'customs.yankee')
 end
 
 return M

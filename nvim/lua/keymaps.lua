@@ -142,6 +142,13 @@ require('which-key').add {
       Customs.switch_pnpm_version.switchTo10()
     end,
   },
+  {
+    '<leader>y',
+    desc = 'Fixed Yank',
+    function()
+      Customs.yankee.yankee()
+    end,
+  },
 }
 
 vim.keymap.set('n', ';', function()
