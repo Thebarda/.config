@@ -73,6 +73,8 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.expandtab = true
 vim.o.guifont = 'Iosevka Term Regular,Hack Nerd Font'
+vim.o.guicursor =
+  'n-v-c-sm:block-blink300-blinkon200-blinkoff150,i-ci-ve:hor25-blink300-blinkon200-blinkoff150,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor'
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -80,12 +82,3 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
-vim.api.nvim_set_hl(0, 'SnacksIndent1', { fg = '#82aaff' })
-vim.api.nvim_set_hl(0, 'SnacksIndent2', { fg = '#c099ff' })
-vim.api.nvim_set_hl(0, 'SnacksIndent3', { fg = '#86e1fc' })
-vim.api.nvim_set_hl(0, 'SnacksIndent4', { fg = '#c3e88d' })
-vim.api.nvim_set_hl(0, 'SnacksIndent5', { fg = '#ff966c' })
-vim.api.nvim_set_hl(0, 'SnacksIndent6', { fg = '#fca7ea' })
-vim.api.nvim_set_hl(0, 'SnacksIndent7', { fg = '#c53b53' })
-vim.api.nvim_set_hl(0, 'SnacksIndent8', { fg = '#ffc777' })
