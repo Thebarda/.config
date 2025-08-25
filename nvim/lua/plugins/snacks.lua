@@ -18,7 +18,7 @@ return {
           follow = true,
           ignored = true,
           focus = 'input',
-          exclude = { 'node_modules' },
+          exclude = { 'node_modules', '*.jpg', '*.png', '*jpeg' },
         },
         files = {
           hidden = true,
@@ -167,6 +167,7 @@ return {
           on_show = function(picker)
             picker.input:set(nil, last_grep_search)
           end,
+          exclude = { '*.png', '*.jpg', '*.jpeg' },
         }
       end,
       desc = 'Search with grep',
