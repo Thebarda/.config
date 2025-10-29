@@ -1,14 +1,8 @@
 [
 	{
-		"context": "vim_mode == visual",
-		"bindings": {
-			"shift-s": ["vim::PushAddSurrounds", {}]
-		}
-	},
-	{
 		"context": "Editor",
 		"bindings": {
-			"ctrl-r": "editor::Rename"
+			"cmd-r": "editor::Rename"
 		}
 	},
 	{
@@ -20,7 +14,13 @@
 	{
 		"context": "workspace",
 		"bindings": {
-			"a": "workspace::NewFile"
+			"cmd-a": "workspace::NewFile"
 		}
-	}
+	},
+ {
+   "context": "(Editor && edit_prediction)",
+   "bindings": {
+     "tab": null
+   }
+ }
 ]

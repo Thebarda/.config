@@ -1,19 +1,21 @@
 {
-  "Log to the console": {
-    "prefix": "clg",
-    "body": [
-      "console.log($1);",
-      "$0"
-    ],
-    "description": "Log to the console"
-  },
-  "Create a function": {
-    "prefix": "func",
-    "body": [
-      "const $1 = () => {",
-      " $0",
-      "};"
-    ],
-    "description": "Create a function"
-  }
+	"Log to the console": {
+		"prefix": "clg",
+		"body": ["console.log($1);"],
+		"description": "Log to the console"
+	},
+	"Create a function": {
+		"prefix": "func",
+		"body": ["const $1 = () => {", " $0", "};"],
+		"description": "Create a function"
+	},
+	"Add a license": {
+		"prefix": "license",
+		"body": [
+			"// Copyright 2025-Present Centreon",
+			"// SPDX-License-Identifier: Apache-2.0",
+			"$0"
+		],
+		"description": "Add a license"
+	}
 }
