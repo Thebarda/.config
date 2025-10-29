@@ -23,7 +23,7 @@ selection-foreground = #ede3c7
 
 window-padding-balance = true 
 window-save-state = always
-macos-titlebar-style=transparent
+macos-titlebar-style = tabs
 copy-on-select = clipboard
 cursor-color = #f5be27
 background-opacity = 0.8
@@ -37,6 +37,7 @@ font-family = Iosevka Term Regular
 font-thicken
 shell-integration-features = no-cursor
 cursor-style = block
+macos-icon = holographic
 
 # https://github.com/hackrmomo/ghostty-shaders
 # custom-shader = shaders/animated-gradient-shader.glsl
