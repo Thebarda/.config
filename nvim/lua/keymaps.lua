@@ -149,6 +149,24 @@ require('which-key').add {
       Customs.yankee.yankee()
     end,
   },
+  {
+    '<leader>gp',
+    desc = 'Github Pull Requests',
+  },
+  {
+    '<leader>gpo',
+    function()
+      Snacks.picker.gh_pr()
+    end,
+    desc = 'GitHub Pull Requests (open)',
+  },
+  {
+    '<leader>gpm',
+    function()
+      Snacks.picker.gh_pr { author = 'Thebarda' }
+    end,
+    desc = 'GitHub Pull Requests (me)',
+  },
 }
 
 vim.keymap.set('n', ';', function()
