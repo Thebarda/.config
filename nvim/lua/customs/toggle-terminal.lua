@@ -40,9 +40,9 @@ function M.open()
   current_float_border_hl = api.nvim_get_hl(0, { name = 'FloatBorder' })
   vim.api.nvim_buf_set_keymap(
     buf, -- Buffer number
-    'n', -- Mode (normal, insert, visual, etc.)
-    'q', -- Keymap
-    ':q<CR>', -- Command to execute
+    't', -- Mode (normal, insert, visual, etc.)
+    '<leader>t', -- Keymap
+    '<C-\\><C-n>:q<CR>', -- Command to execute
     { desc = 'Close' } -- Options (e.g., description)
   )
 end

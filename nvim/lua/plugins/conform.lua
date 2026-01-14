@@ -16,6 +16,10 @@ return { -- Autoformat
     notify_on_error = true,
     formatters_by_ft = {
       lua = { 'stylua' },
+      javascript = { 'biome', 'biome-organize-imports' },
+      javascriptreact = { 'biome', 'biome-organize-imports' },
+      typescript = { 'biome', 'biome-organize-imports' },
+      typescriptreact = { 'biome', 'biome-organize-imports' },
     },
     format_on_save = {
       -- I recommend these options. See :help conform.format for details.
