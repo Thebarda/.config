@@ -12,13 +12,14 @@ return {
       enabled = true,
       sources = {
         explorer = {
-          layout = { preset = 'sidebar', preview = false },
+          layout = { preset = 'default', preview = true },
           hidden = true,
           follow = true,
           ignored = true,
-          focus = 'list',
-          matcher = { sort_empty = false, fuzzy = true },
+          focus = 'input',
+          matcher = { sort_empty = false, fuzzy = false },
           exclude = { 'node_modules', '*.jpg', '*.png', '*jpeg' },
+          auto_close = true
         },
         files = {
           hidden = true,

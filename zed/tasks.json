@@ -1,50 +1,12 @@
-// S ?
-// atic tasks configuration.
-//
-// Example:
 [
 	{
-		"label": "Lazygit",
-		"command": "lazygit",
+		"label": "Commit without verify",
+		"command": "cd $ZED_WORKTREE_ROOT && cd \"$ZED_RELATIVE_DIR\" && git commit -m \"chore: no verify\" --no-verify",
+		"tags": ["git-command"],
 		"args": [],
 		"env": {},
-		"use_new_terminal": true,
-		"allow_concurrent_runs": false
-	},
-	{
-		"label": "Lint file",
-		"command": "cd $ZED_WORKTREE_ROOT && biome check --fix $ZED_RELATIVE_FILE",
-		"args": [],
-		"env": {},
-		"use_new_terminal": true,
+		"use_new_terminal": false,
 		"hide": "always",
-		"allow_concurrent_runs": false
-	},
-	{
-		"label": "Cypress open",
-		"command": "pn cypress:ui",
-		"args": [],
-		"env": {},
-		"use_new_terminal": true,
-		"allow_concurrent_runs": false,
-		"hide": "on_success"
-	},
-	{
-		"label": "Cypress run file",
-		"command": "pn cypress:run",
-		"args": ["--spec", "$ZED_FILE"],
-		"env": {},
-		"use_new_terminal": true,
-		"allow_concurrent_runs": false,
-		"hide": "on_success"
-	},
-	{
-		"label": "Cypress update snapshot file",
-		"command": "pn cypress:run:updateSnapshot",
-		"args": ["--spec", "$ZED_FILE"],
-		"env": {},
-		"use_new_terminal": true,
-		"hide": "on_success",
 		"allow_concurrent_runs": false
 	}
 ]

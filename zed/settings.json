@@ -7,188 +7,179 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-	"ui_font_weight": 500.0,
-	"project_panel": {
-		"default_width": 232.0,
-		"hide_root": true,
-		"show_diagnostics": "errors",
-		"indent_size": 12.0,
-		"entry_spacing": "standard",
-		"dock": "left"
-	},
-	"git_panel": {
-		"dock": "left",
-		"sort_by_path": true
-	},
-	"cursor_shape": "underline",
-	"ui_font_family": "Hack Nerd Font Mono",
-	"buffer_font_family": "Hack Nerd Font Mono",
-	"buffer_font_weight": 500.0,
-	"auto_update_extensions": {
-		"biome": false
-	},
-	"icon_theme": "Material Icon Theme",
-	"features": {
-		"edit_prediction_provider": "zed"
-	},
-	"base_keymap": "VSCode",
-	"theme": "Kanagawa Dragon",
-	"telemetry": {
-		"diagnostics": false,
-		"metrics": false
-	},
-	"vim_mode": true,
-	"ui_font_size": 14.0,
-	"buffer_font_size": 14.0,
-	"terminal": {
-		"font_weight": 431.0,
-		"minimum_contrast": 46.0,
-		"font_size": 14.0,
-		"font_family": "Hack Nerd Font Mono",
-		"line_height": "standard",
-		"shell": {
-			"program": "zsh"
-		}
-	},
-	"inlay_hints": {
-		"enabled": true,
-		"show_type_hints": false,
-		"show_parameter_hints": false,
-		"show_other_hints": true,
-		"edit_debounce_ms": 700,
-		"scroll_debounce_ms": 50
-	},
-	"tabs": {
-		"file_icons": true,
-		"git_status": true
-	},
-	"indent_guides": {
-		"background_coloring": "indent_aware"
-	},
-	"language_servers": [
-		"!typescript-language-server",
-		"!eslint",
-		"!prettier",
-		"!phpactor",
-		"intelephense",
-		"...",
-		"biome"
-	],
-	"file_types": {
-		"po": ["po"]
-	},
-	"prettier": {
-		"allowed": false
-	},
-	"lsp": {
-		"tailwindcss-language-server": {
-			"settings": {
-				"classFunctions": ["cva", "cx"],
-				"experimental": {
-					"classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"]
-				}
-			}
-		}
-	},
-	"languages": {
-		"JavaScript": {
-			"formatter": [
-				{
-					"code_action": "source.fixAll.biome"
-				},
-				{
-					"code_action": "source.organizeImports.biome"
-				},
-				{
-					"language_server": {
-						"name": "biome"
-					}
-				}
-			]
-		},
-		"TypeScript": {
-			"formatter": [
-				{
-					"code_action": "source.fixAll.biome"
-				},
-				{
-					"code_action": "source.organizeImports.biome"
-				},
-				{
-					"language_server": {
-						"name": "biome"
-					}
-				}
-			]
-		},
-		"JSX": {
-			"formatter": [
-				{
-					"code_action": "source.fixAll.biome"
-				},
-				{
-					"code_action": "source.organizeImports.biome"
-				},
-				{
-					"language_server": {
-						"name": "biome"
-					}
-				}
-			]
-		},
-		"TSX": {
-			"formatter": [
-				{
-					"code_action": "source.fixAll.biome"
-				},
-				{
-					"code_action": "source.organizeImports.biome"
-				},
-				{
-					"language_server": {
-						"name": "biome"
-					}
-				}
-			]
-		}
-	},
-	"formatter": {
-		"language_server": {
-			"name": "biome"
-		}
-	},
-	"experimental.theme_overrides": {
-		"renamed.background": "#FFFFFF20",
-		"search.match_background": "#FFFFFF20",
-		"ghost_element.background": "#00000010",
-		"ghost_element.hover": "#00000099",
-		"background.appearance": "blurred",
-		"background": "#000000bb",
-		"editor.background": "#00000010",
-		"editor.gutter.background": "#0000001F",
-		"title_bar.background": "#000000BB",
-		"toolbar.background": "#00000000",
-		"terminal.background": "#00000000",
-		"status_bar.background": "#000000BB",
-		"tab.active_background": "#000000",
-		"tab.inactive_background": "#00000010",
-		"tab_bar.background": "#00000010",
-		"panel.background": "#00000000",
-		"border": "#FFFFFF33",
-		"border.variant": "#FFFFF33",
-		"scrollbar.track.border": "#00000000",
-		"scrollbar.track.background": "#00000000",
-		"scrollbar.thumb.background": "#00000000",
-		"scrollbar.thumb.border": "#FFFFFF90",
-		"editor.active_line.background": "#00000000",
-		"text.muted": "#cdcdcd",
-		"text": "#efefef",
-		"syntax": {
-			"punctuation.delimiter": {
-				"color": "#cdcdcd",
-				"font_style": null,
-				"font_weight": null
-			}
-		}
-	}
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "diff_view_style": "unified",
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6-latest",
+      "enable_thinking": false,
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "buffer_font_weight": 500.0,
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+      "env": {
+        "CLAUDE_CODE_EXECUTABLE": "/opt/homebrew/bin/claude",
+      },
+    },
+  },
+  "edit_predictions": {
+    "provider": "zed",
+  },
+  "project_panel": {
+    "default_width": 232.0,
+    "hide_root": true,
+    "show_diagnostics": "errors",
+    "indent_size": 12.0,
+    "entry_spacing": "standard",
+    "dock": "left",
+  },
+  "git_panel": {
+    "tree_view": true,
+    "dock": "left",
+    "sort_by_path": true,
+  },
+  "cursor_shape": "underline",
+  "ui_font_family": "Hack Nerd Font Mono",
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "icon_theme": {
+    "mode": "light",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme",
+  },
+  "base_keymap": "VSCode",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Gruvbox Dark",
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "vim_mode": true,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 14.0,
+  "terminal": {
+    "font_family": "Hack Nerd Font Mono",
+    "minimum_contrast": 46.0,
+    "font_size": 14.0,
+    "line_height": "standard",
+    "shell": {
+      "program": "zsh",
+    },
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": false,
+    "show_parameter_hints": false,
+    "show_other_hints": true,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50,
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "indent_guides": {
+    "background_coloring": "indent_aware",
+  },
+  "file_types": {
+    "po": ["po"],
+  },
+  "prettier": {
+    "allowed": false,
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": ["cva", "cx"],
+        "experimental": {
+          "classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"],
+        },
+      },
+    },
+  },
+  "formatter": {
+    "external": {
+      "command": "biome",
+      "arguments": ["format", "--write", "--stdin-file-path={buffer_path}"],
+    },
+  },
+  "languages": {
+    "JavaScript": {
+      "use_on_type_format": false,
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TypeScript": {
+      "use_on_type_format": false,
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TSX": {
+      "use_on_type_format": false,
+      "formatter": { "language_server": { "name": "biome" } },
+      "code_actions_on_format": {
+        "source.fixAll.biome": true,
+        "source.organizeImports.biome": true,
+      },
+    },
+  },
+  "theme_overrides": {
+    "Gruvbox Dark": {
+      "background.appearance": "transparent",
+      "border": "#423C38FF",
+      "text.muted": "#E3CABA",
+      "elevated_surface.background": "#1A1817",
+      "surface.background": "#45413EFF",
+      "panel.background": "#45413E00",
+      "terminal.background": "#00000000",
+      "background": "#1A1817BB",
+      "status_bar.background": "#1A1817BB",
+      "title_bar.background": "#1A1817BB",
+      "toolbar.background": "#28282821",
+      "tab_bar.background": "#3A373521",
+      "tab.inactive_background": "#3A373521",
+      "tab.active_background": "#3A3735AA",
+      "editor.background": "#28282821",
+      "editor.gutter.background": "#28282821",
+      "editor.subheader.background": "#3A373521",
+      "editor.highlighted_line.background": "#3A373521",
+      "panel.overlay_background": "#3A3735CC",
+      "panel.overlay_hover": "#4C4642FF",
+    },
+  },
 }

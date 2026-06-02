@@ -17,5 +17,9 @@
 			"$0"
 		],
 		"description": "Add a license"
+	},
+	"license": {
+		"prefix": "license",
+		"body": "// Copyright 2025-Present Centreon\n// SPDX-License-Identifier: Apache-2.0\n"
 	}
 }

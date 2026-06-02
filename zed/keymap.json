@@ -6,6 +6,12 @@
 		}
 	},
 	{
+		"context": "Editor && (extension == tsx || extension == ts || extension == json || extension == js || extension == css)",
+		"bindings": {
+			"ctrl-f": ["task::Spawn", { "task_name": "format with biome" }]
+		}
+	},
+	{
 		"context": "Pane",
 		"bindings": {
 			"cmd-e": "pane::TogglePinTab"
@@ -17,10 +23,40 @@
 			"cmd-a": "workspace::NewFile"
 		}
 	},
+	{
+		"context": "(Editor && edit_prediction)",
+		"bindings": {
+			"tab": null
+		}
+	},
+	{
+		"context": "vim_mode == literal",
+		"unbind": {
+			"ctrl-f": ["vim::Literal", ["ctrl-f", "\u0006"]]
+		}
+	},
+	{
+		"context": "VimControl && !menu",
+		"unbind": {
+			"ctrl-f": "vim::PageDown"
+		}
+	},
+	{
+		"context": "Editor",
+		"unbind": {
+			"ctrl-f": "editor::MoveRight"
+		}
+	},
  {
-   "context": "(Editor && edit_prediction)",
-   "bindings": {
-     "tab": null
-   }
+  "context": "Workspace",
+  "bindings": {
+   "cmd-shift-g": "git_panel::ToggleFocus"
+  }
+ },
+ {
+  "context": "Workspace",
+  "unbind": {
+   "ctrl-shift-g": "git_panel::ToggleFocus"
+  }
  }
 ]

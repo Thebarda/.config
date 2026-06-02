@@ -66,6 +66,13 @@ require('which-key').add {
     desc = 'Git',
   },
   {
+    '<leader>e',
+    function()
+      Snacks.explorer()
+    end,
+    desc = 'Explorer',
+  },
+  {
     '<leader>gg',
     function()
       Snacks.lazygit()

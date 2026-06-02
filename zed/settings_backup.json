@@ -7,9 +7,21 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-	"auto_update_extensions": {
-		"biome": false
+	"project_panel": {
+		"default_width": 232.0,
+		"hide_root": true,
+		"show_diagnostics": "errors",
+		"indent_size": 12.0,
+		"entry_spacing": "standard",
+		"dock": "left"
 	},
+	"git_panel": {
+		"dock": "left",
+		"sort_by_path": true
+	},
+	"cursor_shape": "underline",
+	"ui_font_family": "Hack Nerd Font Mono",
+	"buffer_font_family": "Hack Nerd Font Mono",
 	"icon_theme": "Material Icon Theme",
 	"features": {
 		"edit_prediction_provider": "zed"
@@ -21,11 +33,12 @@
 		"metrics": false
 	},
 	"vim_mode": true,
-	"ui_font_size": 14,
-	"buffer_font_size": 14,
+	"ui_font_size": 14.0,
+	"buffer_font_size": 14.0,
 	"terminal": {
-		"font_size": 13,
 		"font_family": "Hack Nerd Font Mono",
+		"minimum_contrast": 46.0,
+		"font_size": 14.0,
 		"line_height": "standard",
 		"shell": {
 			"program": "zsh"
@@ -61,50 +74,76 @@
 	"prettier": {
 		"allowed": false
 	},
+	"lsp": {
+		"tailwindcss-language-server": {
+			"settings": {
+				"classFunctions": ["cva", "cx"],
+				"experimental": {
+					"classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"]
+				}
+			}
+		}
+	},
 	"languages": {
 		"JavaScript": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
+			"formatter": [
+				{
+					"code_action": "source.fixAll.biome"
+				},
+				{
+					"code_action": "source.organizeImports.biome"
+				},
+				{
+					"language_server": {
+						"name": "biome"
+					}
 				}
-			},
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
-			}
+			]
 		},
 		"TypeScript": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
+			"formatter": [
+				{
+					"code_action": "source.fixAll.biome"
+				},
+				{
+					"code_action": "source.organizeImports.biome"
+				},
+				{
+					"language_server": {
+						"name": "biome"
+					}
 				}
-			},
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
-			}
+			]
 		},
 		"JSX": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
+			"formatter": [
+				{
+					"code_action": "source.fixAll.biome"
+				},
+				{
+					"code_action": "source.organizeImports.biome"
+				},
+				{
+					"language_server": {
+						"name": "biome"
+					}
 				}
-			},
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
-			}
+			]
 		},
 		"TSX": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
+			"formatter": [
+				{
+					"code_action": "source.fixAll.biome"
+				},
+				{
+					"code_action": "source.organizeImports.biome"
+				},
+				{
+					"language_server": {
+						"name": "biome"
+					}
 				}
-			},
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
-			}
+			]
 		}
 	},
 	"formatter": {

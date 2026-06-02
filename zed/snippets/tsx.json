@@ -1,29 +1,26 @@
 {
-  "Log to the console": {
-    "prefix": "clg",
-    "body": [
-      "console.log($1);",
-      "$0"
-    ],
-    "description": "Log to the console"
-  },
-  "Create a function": {
-    "prefix": "func",
-    "body": [
-      "const $1 = (): void => {",
-      "\t$0",
-      "};"
-    ],
-    "description": "Create a function"
-  },
-  "reactFunctionComponent": {
-    "prefix": "rfc",
-    "body": "\nconst ${TM_FILENAME_BASE} = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}\n\nexport default ${TM_FILENAME_BASE}",
-    "description": "Creates a React function component without PropTypes"
-  },
-  "reactFunctionComponentProps": {
-    "prefix": "rfcp",
-    "body": "\ninterface Props {}\n\nconst ${TM_FILENAME_BASE} = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}\n\nexport default ${TM_FILENAME_BASE}",
-    "description": "Creates a React function component without PropTypes"
-  }
+	"Log to the console": {
+		"prefix": "clg",
+		"body": ["console.log($1);", "$0"],
+		"description": "Log to the console"
+	},
+	"Create a function": {
+		"prefix": "func",
+		"body": ["const $1 = (): void => {", "\t$0", "};"],
+		"description": "Create a function"
+	},
+	"reactFunctionComponent": {
+		"prefix": "rfc",
+		"body": "\nconst ${TM_FILENAME_BASE} = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}\n\nexport default ${TM_FILENAME_BASE}",
+		"description": "Creates a React function component without PropTypes"
+	},
+	"reactFunctionComponentProps": {
+		"prefix": "rfcp",
+		"body": "\ninterface Props {}\n\nconst ${TM_FILENAME_BASE} = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}\n\nexport default ${TM_FILENAME_BASE}",
+		"description": "Creates a React function component without PropTypes"
+	},
+	"license": {
+		"prefix": "license",
+		"body": "// Copyright 2025-Present Centreon\n// SPDX-License-Identifier: Apache-2.0\n"
+	}
 }
