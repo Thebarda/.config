@@ -45,6 +45,13 @@ function M.open()
     '<C-\\><C-n>:q<CR>', -- Command to execute
     { desc = 'Close' } -- Options (e.g., description)
   )
+  vim.api.nvim_buf_set_keymap(
+    buf, -- Buffer number
+    'n', -- Mode (normal, insert, visual, etc.)
+    '<leader>t', -- Keymap
+    '<C-\\><C-n>:q<CR>', -- Command to execute
+    { desc = 'Close' } -- Options (e.g., description)
+  )
 end
 
 function M.toggle_buf()

@@ -1,8 +1,5 @@
-local Input = require 'nui.input'
-
 require('which-key').add {
   mode = { 'n', 'v' },
-  { '<leader>e', '<cmd>lua Snacks.explorer()<CR>' },
   { '<leader>l', group = 'Code actions', icon = { icon = ' ', color = 'blue' } },
   { '<leader>ld', require('telescope.builtin').lsp_definitions, desc = 'Goto Definition' },
   { '<leader>lD', '<cmd>:Lspsaga hover_doc<CR>', desc = 'Show current documentation' },
@@ -18,13 +15,6 @@ require('which-key').add {
   },
   { '<leader>P', '<cmd>Telescope project winblend=30<CR>', desc = 'Open project', icon = ' ' },
   { '<leader>s', group = 'Search', icon = { icon = ' ', color = 'green' } },
-  {
-    '<leader>sf',
-    function()
-      Snacks.picker.files()
-    end,
-    desc = 'Find file',
-  },
   {
     '<leader>sh',
     '<cmd>lua require("grug-far").with_visual_selection({ prefills = { paths = vim.fn.expand("%") } })<cr>',
@@ -167,36 +157,23 @@ require('which-key').add {
     end,
     desc = 'GitHub Pull Requests (me)',
   },
+  {
+    '<leader>w',
+    '<cmd>:w<CR>',
+  },
+  {
+    ';w',
+    '<cmd>:w<CR>',
+  },
 }
 
-vim.keymap.set('n', ';', function()
-  local vimCmdInput = Input({
-    position = '50%',
-    size = {
-      width = 20,
-    },
-    border = {
-      style = 'rounded',
-      text = {
-        top = 'Command',
-        top_align = 'left',
-      },
-    },
-    win_options = {
-      winhighlight = 'Normal:Normal,FloatBorder:Normal',
-    },
-  }, {
-    prompt = '> ',
-    on_submit = function(text)
-      if text == nil then
-        return
-      end
-      vim.cmd(text)
-    end,
-  })
-
-  vimCmdInput:map('n', '<Esc>', function()
-    vimCmdInput:unmount()
-  end, { noremap = true })
-  vimCmdInput:mount()
-end)
+vim.g.copilot_no_tab_map = true
+vim.keymap.set('i', '<M-Tab>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false,
+})
+vim.keymap.set('i', '<M-S-Tab>', '<Plug>(copilot-accept-word)')
+vim.keymap.set('i', '<M-Right>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<M-Left>', '<Plug>(copilot-previous)')
+vim.keymap.set('i', '<M-Down>', '<Plug>(copilot-dismiss)')
+vim.keymap.set('n', '<leader>co', ':Copilot<CR>')

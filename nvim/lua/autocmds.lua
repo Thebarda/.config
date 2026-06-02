@@ -126,3 +126,12 @@ vim.api.nvim_create_autocmd('CursorHold', {
     vim.diagnostic.open_float(nil)
   end,
 })
+
+local ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'javascript', 'json', 'php', 'typescript' }
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = ensure_installed,
+  callback = function()
+    vim.treesitter.start()
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})

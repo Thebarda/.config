@@ -22,7 +22,7 @@ return {
         'dockerfile-language-server',
         'docker-compose-language-service',
         'css-lsp',
-        { 'biome', version = '1.9.4' },
+        'biome',
         'vim-language-server',
         'pyright',
         'tailwindcss-language-server',

@@ -12,16 +12,34 @@ return {
       enabled = true,
       sources = {
         explorer = {
-          layout = { preset = 'default', preview = true },
-          auto_close = true,
+          layout = { preset = 'sidebar', preview = false },
           hidden = true,
           follow = true,
           ignored = true,
-          focus = 'input',
+          focus = 'list',
+          matcher = { sort_empty = false, fuzzy = true },
           exclude = { 'node_modules', '*.jpg', '*.png', '*jpeg' },
         },
         files = {
           hidden = true,
+        },
+        grep = {
+          regex = false,
+        },
+      },
+      actions = {
+        sidekick_send = function(...)
+          return require('sidekick.cli.picker.snacks').send(...)
+        end,
+      },
+      win = {
+        input = {
+          keys = {
+            ['<a-a>'] = {
+              'sidekick_send',
+              mode = { 'n', 'i' },
+            },
+          },
         },
       },
     },
