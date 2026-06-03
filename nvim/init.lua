@@ -4,8 +4,6 @@ vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 vim.pack.add({ 'https://github.com/mason-org/mason.nvim' })
 vim.pack.add({ 'https://github.com/rebelot/kanagawa.nvim' })
 
-require 'lsp'
-
 require('mini.basics').setup()
 require('mini.files').setup({
 	mappings = {
@@ -22,7 +20,11 @@ require('mini.completion').setup({
 })
 require('mini.notify').setup({})
 require('mini.pick').setup({})
-require('mini.comment').setup({})
+require('mini.comment').setup({
+	options = {
+		ignore_blank_line = true
+	}
+})
 require('mini.cursorword').setup({})
 require('mini.diff').setup({
 	view = {
@@ -77,4 +79,5 @@ require("kanagawa").setup({
 })
 vim.cmd("colorscheme kanagawa")
 
+require 'lsp'
 require 'keymap'
