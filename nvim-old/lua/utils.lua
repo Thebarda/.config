@@ -15,4 +15,3 @@ end
 return {
   getOS = getOS,
 }
-
