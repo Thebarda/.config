@@ -1,8 +1,11 @@
+local start = os.clock()
+
 require 'config.vim'
 
 vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 vim.pack.add({ 'https://github.com/mason-org/mason.nvim' })
 vim.pack.add({ 'https://github.com/rebelot/kanagawa.nvim' })
+vim.pack.add({ 'https://github.com/itmecho/neoterm.nvim' })
 
 require('mini.basics').setup()
 require('mini.files').setup({
@@ -78,6 +81,17 @@ require("kanagawa").setup({
 	end,
 })
 vim.cmd("colorscheme kanagawa")
+require('neoterm').setup({
+	clear_on_run = false, -- Run clear command before user specified commands
+	position = 'center', -- Position of the terminal window: fullscreen (0), top (1), right (2), bottom (3), left (4), center (5) (string or integer value)
+	noinsert = false,    -- Disable entering insert mode when opening the neoterm window
+	width = 0.75,        -- Width of the terminal window (percentage, ratio, or range between 0-1)
+	height = 0.75,       -- Height of the terminal window (percentage, ratio, or range between 0-1)
+})
 
 require 'lsp'
 require 'keymap'
+
+local elapsed_time = os.clock() - start
+
+vim.notify(string.format('Config loaded in: %.2f CPU ms', elapsed_time * 1000))

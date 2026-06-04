@@ -11,6 +11,10 @@
     "mini.nvim": {
       "rev": "11afe78a10570fe1d0c7ed0b6fc2b5b19098cb45",
       "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "neoterm.nvim": {
+      "rev": "23a780136892b1128485f20d772a771e528b651b",
+      "src": "https://github.com/itmecho/neoterm.nvim"
     }
   }
 }

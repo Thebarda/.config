@@ -19,6 +19,7 @@ vim.lsp.config['luals'] = {
 vim.lsp.config['vtsls'] = {
 	cmd = { 'vtsls', '--stdio' },
 	filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact', 'vue' },
+	root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
 }
 vim.lsp.config['biome'] = {
 	cmd = { 'biome', 'lsp-proxy' },

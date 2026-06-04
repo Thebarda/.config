@@ -16,6 +16,13 @@ vim.keymap.set('n', '<leader>p',
 vim.keymap.set('n', '<leader>sf', '<cmd>Pick files<cr>')
 vim.keymap.set('n', '<leader>sb', '<cmd>Pick buffers<cr>')
 vim.keymap.set('n', '<leader>sg', '<cmd>Pick grep_live<cr>')
+vim.keymap.set('n', '<leader>t', function()
+	require('neoterm').toggle()
+end)
+vim.keymap.set('t', '<esc>', function()
+	require('neoterm').close()
+end)
+
 
 local imap_expr = function(lhs, rhs)
 	vim.keymap.set('i', lhs, rhs, { expr = true })
