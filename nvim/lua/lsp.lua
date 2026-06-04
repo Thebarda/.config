@@ -105,9 +105,8 @@ vim.lsp.config('*', {
 
 vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'cssvars', 'cssls', 'markdown', 'gdscript', 'tailwindcss' }
 
-vim.opt.completeopt =
-"menu,menuone,noselect,popup"                       -- Ensures the menu appears even for a single match and uses the native popup window.
-vim.o.autocomplete = true                           -- Enables the overall completion feature.
+vim.opt.completeopt = "menu,menuone,noselect,popup"
+vim.o.autocomplete = true
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
@@ -116,6 +115,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if not client_id then
 			return
 		end
+
+		local bufopts = { noremap = true, silent = true, buffer = args.buf }
+		vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set("i", "<a-cr>", vim.lsp.buf.code_action, bufopts)
 	end,
 })
 
