@@ -58,3 +58,17 @@ require('mini.move').setup({
 		right = '<M-Right>'
 	}
 })
+local gen_loader = require('mini.snippets').gen_loader
+require('mini.snippets').setup({
+	snippets = {
+		-- Load snippets based on current language by reading files from
+		-- "snippets/" subdirectories from 'runtimepath' directories.
+		gen_loader.from_lang({
+			lang_patterns = {
+				tsx = { 'typescript.json' },
+				typescriptreact = { 'typescript.json' },
+			},
+		}),
+	},
+})
+MiniSnippets.start_lsp_server({ match = false })
