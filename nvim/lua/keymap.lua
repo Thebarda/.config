@@ -38,6 +38,27 @@ vim.keymap.set('n', '<s-k>', function()
 		'rounded'
 	})
 end)
+vim.keymap.set('v', '<leader>sr', function()
+	local mode = vim.fn.mode()
+	if mode ~= "v" and mode ~= "V" and mode ~= "\22" then
+		return nil
+	end
+
+	local lines = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = mode })
+	local selection = table.concat(lines, "\n")
+
+	require('mini.input').ui_input({ prompt = 'Replace', scope = 'cursor' },
+		function(new_name)
+			if new_name == nil or new_name == '' then
+				vim.notify('Replace cancelled', vim.log.levels.WARN)
+				vim.cmd('normal !')
+				return
+			end
+			vim.cmd('s/' .. vim.fn.escape(selection, '/') .. '/' .. vim.fn.escape(new_name, '/') .. '/g')
+			vim.cmd('normal !')
+			vim.notify('Replaced to ' .. new_name, vim.log.levels.INFO)
+		end)
+end)
 
 local expr = function(lhs, rhs)
 	vim.keymap.set('i', lhs, rhs, { expr = true })
