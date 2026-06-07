@@ -85,3 +85,4 @@ vim.api.nvim_create_autocmd('BufEnter', {
 		map.open()
 	end
 })
+require('mini.input').setup({})
