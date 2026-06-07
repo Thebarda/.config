@@ -19,9 +19,10 @@ vim.keymap.set('n', '<leader>sg', '<cmd>Pick grep_live<cr>')
 vim.keymap.set('n', '<leader>t', function()
 	require('neoterm').toggle()
 end)
-vim.keymap.set('t', '<esc>', function()
+vim.keymap.set('t', '<esc><esc>', function()
 	require('neoterm').close()
 end)
+vim.keymap.set('n', '<esc><esc>', '<cmd>nohlsearch<cr>')
 
 
 local imap_expr = function(lhs, rhs)
