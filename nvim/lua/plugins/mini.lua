@@ -72,3 +72,16 @@ require('mini.snippets').setup({
 	},
 })
 MiniSnippets.start_lsp_server({ match = false })
+local map = require('mini.map')
+map.setup({
+	integrations = {
+		map.gen_integration.diagnostic(),
+		map.gen_integration.diff(),
+		map.gen_integration.builtin_search(),
+	},
+})
+vim.api.nvim_create_autocmd('BufEnter', {
+	callback = function()
+		map.open()
+	end
+})
