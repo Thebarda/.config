@@ -72,6 +72,14 @@ require('mini.snippets').setup({
 	},
 })
 MiniSnippets.start_lsp_server({ match = false })
+vim.api.nvim_create_autocmd('User', {
+	pattern = 'MiniSnippetsSessionJump',
+	callback = function(args)
+		if args.data.tabstop_to == '0' then
+			MiniSnippets.session.stop()
+		end
+	end,
+})
 local map = require('mini.map')
 map.setup({
 	integrations = {
@@ -79,6 +87,9 @@ map.setup({
 		map.gen_integration.diff(),
 		map.gen_integration.builtin_search(),
 	},
+	symbols = {
+		encode = map.gen_encode_symbols.dot('4x2')
+	}
 })
 vim.api.nvim_create_autocmd('BufEnter', {
 	callback = function()

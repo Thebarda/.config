@@ -195,6 +195,19 @@ vim.lsp.config('copilot', {
 	end,
 })
 
+vim.lsp.config("fallow", {
+	cmd = { "fallow-lsp" },
+	filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+	root_markers = { ".fallowrc.json", "package.json", ".git" },
+	init_options = {
+		-- Every issue type is enabled by default. List only the ones you
+		-- want to turn off; any key you omit stays enabled.
+		issueTypes = {
+			["circular-dependencies"] = false,
+		},
+	},
+})
+
 vim.lsp.config('*', {
 	capabilities = vim.tbl_deep_extend(
 		'force',
@@ -203,7 +216,7 @@ vim.lsp.config('*', {
 	),
 })
 
-vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'cssvars', 'cssls', 'markdown', 'gdscript', 'tailwindcss', 'copilot' }
+vim.lsp.enable { 'luals', 'vtsls', 'biome', 'rust_analyzer', 'cssvars', 'cssls', 'markdown', 'gdscript', 'tailwindcss', 'copilot', 'fallow' }
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),

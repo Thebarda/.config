@@ -14,8 +14,13 @@ vim.keymap.set('n', '<leader>p',
 	end)
 vim.keymap.set('n', '<leader>r', function()
 	local old_name = vim.fn.expand('<cword>')
-	require('mini.input').ui_input({ prompt = 'Rename ' .. old_name, scope = 'cursor' },
+	require('mini.input').ui_input({ prompt = 'Rename ' .. old_name, scope = 'cursor', default = old_name },
 		function(new_name)
+			if new_name == nil or new_name == '' then
+				vim.notify('Replace cancelled', vim.log.levels.WARN)
+				vim.cmd('normal !')
+				return
+			end
 			vim.lsp.buf.rename(new_name)
 			vim.notify('Renamed ' .. old_name .. ' to ' .. new_name, vim.log.levels.INFO)
 		end)
@@ -47,17 +52,23 @@ vim.keymap.set('v', '<leader>sr', function()
 	local lines = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = mode })
 	local selection = table.concat(lines, "\n")
 
-	require('mini.input').ui_input({ prompt = 'Replace', scope = 'cursor' },
+	require('mini.input').ui_input({ prompt = 'Replace', scope = 'cursor', default = selection },
 		function(new_name)
 			if new_name == nil or new_name == '' then
 				vim.notify('Replace cancelled', vim.log.levels.WARN)
 				vim.cmd('normal !')
 				return
 			end
-			vim.cmd('s/' .. vim.fn.escape(selection, '/') .. '/' .. vim.fn.escape(new_name, '/') .. '/g')
+			vim.cmd('%s/' .. vim.fn.escape(selection, '/') .. '/' .. vim.fn.escape(new_name, '/') .. '/g')
 			vim.cmd('normal !')
 			vim.notify('Replaced to ' .. new_name, vim.log.levels.INFO)
 		end)
+end)
+vim.keymap.set('n', '<leader>U', function()
+	vim.pack.update()
+end)
+vim.keymap.set('n', 'M', function()
+	vim.diagnostic.open_float()
 end)
 
 local expr = function(lhs, rhs)
