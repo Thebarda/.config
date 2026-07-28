@@ -70,12 +70,30 @@ require('mini.snippets').setup({
 			},
 		}),
 	},
+	expand = {
+		-- Render empty tabstops as nothing instead of the default '•'/'∎'
+		-- placeholder glyphs (e.g. `propName={}` instead of `propName={•}`).
+		insert = function(snippet, opts)
+			opts = vim.tbl_deep_extend('force', opts or {}, { empty_tabstop = '', empty_tabstop_final = '' })
+			MiniSnippets.default_insert(snippet, opts)
+		end,
+	},
 })
 MiniSnippets.start_lsp_server({ match = false })
 vim.api.nvim_create_autocmd('User', {
 	pattern = 'MiniSnippetsSessionJump',
 	callback = function(args)
 		if args.data.tabstop_to == '0' then
+			MiniSnippets.session.stop()
+		end
+	end,
+})
+-- A snippet with no distinct final tabstop (e.g. a mirrored `${1:x}={$1}`
+-- prop template) never fires the jump-to-'0' event above, so its tabstop
+-- highlight lingers indefinitely. Leaving Insert mode means we're done.
+vim.api.nvim_create_autocmd('InsertLeave', {
+	callback = function()
+		if MiniSnippets.session.get() then
 			MiniSnippets.session.stop()
 		end
 	end,
