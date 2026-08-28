@@ -1,5 +1,19 @@
-configstore/
-iterm2
+# Ignore everything at the repo root...
+/*
+# ...except these
+!/.gitignore
+!/README.md
+!/config
+!/starship.toml
+!/VSCode.code-profile
+!/ghostty/
+!/kitty/
+!/lazygit/
+!/nvim/
+!/nvim-old/
+!/zed/
+
+# Stuff inside the kept directories
 zed/.tmp*
 zed/embeddings
 zed/prompts
