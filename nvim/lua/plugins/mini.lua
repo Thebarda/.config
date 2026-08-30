@@ -115,3 +115,4 @@ vim.api.nvim_create_autocmd('BufEnter', {
 	end
 })
 require('mini.input').setup({})
+require('mini.statuscolumn').setup({})

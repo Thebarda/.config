@@ -18,3 +18,5 @@ zed/.tmp*
 zed/embeddings
 zed/prompts
 Session.vim
+
+*/.DS_Store
