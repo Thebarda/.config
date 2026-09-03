@@ -7,6 +7,7 @@
 !/starship.toml
 !/VSCode.code-profile
 !/ghostty/
+!/hypr/
 !/kitty/
 !/lazygit/
 !/nvim/
@@ -14,6 +15,7 @@
 !/zed/
 
 # Stuff inside the kept directories
+hypr/*.bak.*
 zed/.tmp*
 zed/embeddings
 zed/prompts
