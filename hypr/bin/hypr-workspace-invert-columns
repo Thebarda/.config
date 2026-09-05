@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-notify() { command -v omarchy-notification-send >/dev/null && omarchy-notification-send -g 󱂬 "$1" || true; }
+notify() { command -v notify-send >/dev/null && notify-send -u low "$1" || true; }
 dispatch() { hyprctl dispatch "$1" >/dev/null; }
 
 ws=${1:-$(hyprctl activeworkspace -j | jq -r '.id')}
