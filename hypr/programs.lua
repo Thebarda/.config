@@ -118,13 +118,13 @@ M.activity_monitor = o.first_cmd({ "btop", "htop", "top" })
 -- stdin and prints the chosen line, which is what the clipboard history and
 -- keybinding cheatsheet need.
 local launchers = {
+	{ cmd = "noctalia",   run = "noctalia msg panel-toggle launcher", demnu = "" },
 	{ cmd = "fuzzel",     run = "fuzzel",                             dmenu = "fuzzel --dmenu" },
 	{ cmd = "wofi",       run = "wofi --show drun",                   dmenu = "wofi --show dmenu" },
 	{ cmd = "rofi",       run = "rofi -show drun",                    dmenu = "rofi -dmenu" },
 	{ cmd = "tofi-drun",  run = "tofi-drun",                          dmenu = "tofi" },
 	{ cmd = "bemenu-run", run = "bemenu-run",                         dmenu = "bemenu" },
-	{ cmd = "walker",     run = "walker",                             dmenu = "walker --dmenu" },
-	{ cmd = "noctalia",   run = "noctalia msg panel-toggle launcher", demnu = "" }
+	{ cmd = "walker",     run = "walker",                             dmenu = "walker --dmenu" }
 }
 
 for _, launcher in ipairs(launchers) do

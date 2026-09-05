@@ -23,6 +23,17 @@ o.launch_on_start(programs.bar)
 o.launch_on_start(programs.wallpaper_daemon)
 o.launch_on_start(programs.idle_daemon)
 
+-- hyprpaper (v0.8.4) doesn't reliably apply hyprpaper.conf on its own at
+-- startup, so set the wallpaper over its IPC once it's had a moment to come
+-- up after the launch above.
+if o.cmd_present("hyprpaper") then
+	o.exec_on_start(
+		"bash -c 'sleep 1; "
+			.. "hyprctl hyprpaper wallpaper \"HDMI-A-1,/home/moojann/Documents/wallpaper1.jpg\"; "
+			.. "hyprctl hyprpaper wallpaper \"DP-1,/home/moojann/Documents/wallpaper1.jpg\"'"
+	)
+end
+
 -- Keeps clipboard history for SUPER + CTRL + V.
 o.launch_on_start(programs.clipboard_daemon)
 

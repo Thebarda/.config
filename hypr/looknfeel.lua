@@ -139,6 +139,10 @@ hl.config({
   cursor = {
     hide_on_key_press = true,
     warp_on_change_workspace = 1,
+    -- nouveau's hardware cursor plane flickers/vanishes when idle on this
+    -- GPU; force software cursor rendering to avoid it.
+    no_hardware_cursors = true,
+    use_cpu_buffer = true,
   },
 
   binds = {

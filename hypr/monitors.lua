@@ -22,14 +22,14 @@ end
 local layouts = {}
 
 -- Desktop: two 1440p panels side by side, 165 Hz primary on the left.
-layouts.moojann = function()
+layouts.nixos = function()
   hl.env("GDK_SCALE", "2")
 
   -- Variable refresh rate (FreeSync/G-Sync). 0 = off, 1 = on, 2 = fullscreen only.
-  hl.config({ misc = { vrr = 1 } })
+  hl.config({ misc = { vrr = 0 } })
 
-  hl.monitor({ output = "DP-1", mode = "2560x1440@165", position = "0x0", scale = "auto" })
   hl.monitor({ output = "HDMI-A-1", mode = "2560x1440@144", position = "2560x0", scale = "auto" })
+  hl.monitor({ output = "DP-1", mode = "2560x1440@144", position = "0x0", scale = "auto" })
 end
 
 local layout = layouts[hostname()]

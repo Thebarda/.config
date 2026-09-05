@@ -2,8 +2,9 @@
 -- https://wiki.hypr.land/Configuring/Environment-variables/
 
 -- Cursor size. Set both: the second is for apps using hyprcursor themes.
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_SIZE", "32")
+hl.env("XCUSORS_THEME", "Bibata-Mordern-Classic")
+hl.env("HYPRCURSOR_SIZE", "32")
 
 -- Prefer Wayland everywhere, with XWayland only as a fallback.
 hl.env("GDK_BACKEND", "wayland,x11,*")
