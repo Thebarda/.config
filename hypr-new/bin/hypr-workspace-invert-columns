@@ -1,0 +1,60 @@
+#!/bin/bash
+# Invert (mirror) the two columns of a Hyprland dwindle workspace:
+# everything on the left swaps places with everything on the right.
+
+set -euo pipefail
+
+notify() { command -v notify-send >/dev/null && notify-send -u low "$1" || true; }
+dispatch() { hyprctl dispatch "$1" >/dev/null; }
+
+ws=${1:-$(hyprctl activeworkspace -j | jq -r '.id')}
+[[ $ws =~ ^-?[0-9]+$ ]] || { notify "No active workspace"; exit 1; }
+
+orig=$(hyprctl activewindow -j | jq -r '.address // empty')
+
+# Tiled, visible windows on the workspace, as: address x y w h
+mapfile -t win < <(hyprctl clients -j | jq -r --argjson ws "$ws" '
+  .[] | select(.workspace.id == $ws and .mapped and (.hidden | not) and (.floating | not))
+      | "\(.address) \(.at[0]) \(.at[1]) \(.size[0]) \(.size[1])"')
+
+((${#win[@]} > 1)) || { notify "Nothing to invert on workspace $ws"; exit 0; }
+
+# Horizontal midpoint of the tiled area
+min_x=$(printf '%s\n' "${win[@]}" | awk '{print $2}' | sort -n | head -1)
+max_x=$(printf '%s\n' "${win[@]}" | awk '{print $2+$4}' | sort -n | tail -1)
+mid=$(((min_x + max_x) / 2))
+
+left=() right=()
+for w in "${win[@]}"; do
+  read -r addr x y cw _ <<<"$w"
+  center=$((x + cw / 2))
+  # A window straddling the midpoint spans both columns -> not a 2-column layout
+  if ((x < mid - 8 && x + cw > mid + 8)); then
+    notify "Workspace $ws is not split into two columns"
+    exit 0
+  fi
+  if ((center < mid)); then left+=("$y $addr"); else right+=("$y $addr"); fi
+done
+
+((${#left[@]} && ${#right[@]})) || { notify "Workspace $ws is not split into two columns"; exit 0; }
+
+if ((${#left[@]} == 1)); then
+  # The lone window's parent is the root split: swap its two halves outright.
+  dispatch "hl.dsp.focus({ window = \"address:${left[0]#* }\" })"
+  dispatch 'hl.dsp.layout("swapsplit")'
+elif ((${#right[@]} == 1)); then
+  dispatch "hl.dsp.focus({ window = \"address:${right[0]#* }\" })"
+  dispatch 'hl.dsp.layout("swapsplit")'
+elif ((${#left[@]} == ${#right[@]})); then
+  # Equal rows: swap each left window with its counterpart across the divider.
+  mapfile -t left < <(printf '%s\n' "${left[@]}" | sort -n)
+  for row in "${left[@]}"; do
+    dispatch "hl.dsp.focus({ window = \"address:${row#* }\" })"
+    dispatch 'hl.dsp.window.swap({ direction = "r" })'
+  done
+else
+  notify "Columns have ${#left[@]} and ${#right[@]} windows; can't mirror them"
+  exit 0
+fi
+
+[[ -n $orig ]] && dispatch "hl.dsp.focus({ window = \"address:$orig\" })"

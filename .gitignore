@@ -8,6 +8,7 @@
 !/VSCode.code-profile
 !/ghostty/
 !/hypr/
+!/hypr-new/
 !/kitty/
 !/lazygit/
 !/nvim/
@@ -16,6 +17,9 @@
 
 # Stuff inside the kept directories
 hypr/*.bak.*
+hypr-new/*.bak.*
+# Per-machine overrides, loaded last by hypr-new/hyprland.lua
+hypr-new/local.lua
 zed/.tmp*
 zed/embeddings
 zed/prompts

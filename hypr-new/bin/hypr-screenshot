@@ -1,0 +1,50 @@
+#!/bin/bash
+# Take a screenshot of a region (default), the focused window, or the focused
+# monitor. The image lands on the clipboard and in a dated file under
+# ~/Pictures/Screenshots.
+#
+# Needs grim; region mode also needs slurp, window mode jq, and the clipboard
+# copy wl-clipboard. Anything missing is skipped rather than fatal.
+
+set -euo pipefail
+
+mode=${1:-region}
+
+notify() { command -v notify-send >/dev/null && notify-send "$@" || true; }
+die() { notify -u critical "Screenshot failed" "$1"; echo "$1" >&2; exit 1; }
+
+command -v grim >/dev/null || die "grim is not installed"
+
+dir=${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots
+file="$dir/$(date +%Y-%m-%d_%H-%M-%S).png"
+mkdir -p "$dir"
+
+case $mode in
+region)
+  command -v slurp >/dev/null || die "slurp is not installed"
+  # slurp exits non-zero when the selection is cancelled with Escape.
+  geometry=$(slurp -d) || exit 0
+  grim -g "$geometry" "$file"
+  ;;
+window)
+  command -v jq >/dev/null || die "jq is not installed"
+  geometry=$(hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
+  grim -g "$geometry" "$file"
+  ;;
+output)
+  command -v jq >/dev/null || die "jq is not installed"
+  # By name rather than geometry, so a scaled monitor still captures at its
+  # full pixel resolution.
+  grim -o "$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name')" "$file"
+  ;;
+*)
+  echo "usage: ${0##*/} [region|window|output]" >&2
+  exit 1
+  ;;
+esac
+
+if command -v wl-copy >/dev/null; then
+  wl-copy --type image/png <"$file"
+fi
+
+notify -i "$file" "Screenshot saved" "$file"

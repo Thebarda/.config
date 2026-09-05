@@ -1,0 +1,62 @@
+#!/bin/bash
+# Show the current keybindings. Uses the list the config writes on every load
+# (see o.write_keybindings in helpers.lua), which spells the keys exactly as
+# the config does; falls back to `hyprctl binds` if that file isn't there.
+#
+# Only bindings given a description show up -- that's what o.bind's second
+# argument is for.
+
+set -euo pipefail
+
+state=${XDG_STATE_HOME:-$HOME/.local/state}/hypr/keybindings.tsv
+
+if [[ -s $state ]]; then
+  bindings=$(cat "$state")
+elif command -v jq >/dev/null; then
+  # Hyprland reports modifiers as a bitmask, and reports nothing at all for
+  # keys bound by scancode, so those come out as "(scancode)".
+  bindings=$(hyprctl -j binds | jq -r '
+    def bit(m; b): ((m / b) | floor) % 2 == 1;
+    def mods(m):
+      [ if bit(m; 64) then "SUPER" else empty end,
+        if bit(m; 4) then "CTRL" else empty end,
+        if bit(m; 8) then "ALT" else empty end,
+        if bit(m; 1) then "SHIFT" else empty end ] | join(" + ");
+
+    [ .[] | select(.description != null and .description != "") ]
+    | map({
+        keys: ([ (mods(.modmask) | select(. != "")),
+                 (if .key != "" then .key else "(scancode)" end) ] | join(" + ")),
+        description
+      })
+    | unique_by(.keys)
+    | .[]
+    | "\(.keys)\t\(.description)"
+  ' | sort)
+else
+  echo "No keybinding list found, and jq is not installed." >&2
+  exit 1
+fi
+
+[[ -n $bindings ]] || { echo "No described keybindings found." >&2; exit 1; }
+
+# Bindings made by scancode (so they follow the physical key rather than the
+# layout) read as code:20; print what a US keyboard has on those keys.
+labels=(1 2 3 4 5 6 7 8 9 0 - =)
+substitutions=()
+for index in "${!labels[@]}"; do
+  substitutions+=(-e "s/code:$((index + 10))\b/${labels[index]}/g")
+done
+bindings=$(sed "${substitutions[@]}" <<<"$bindings")
+
+formatted=$(column -t -s $'\t' <<<"$bindings")
+
+# The launcher is only a viewer here: whatever gets picked is thrown away.
+for picker in "fuzzel --dmenu" "wofi --show dmenu" "rofi -dmenu" "tofi" "bemenu"; do
+  if command -v "${picker%% *}" >/dev/null; then
+    $picker <<<"$formatted" >/dev/null 2>&1 || true
+    exit 0
+  fi
+done
+
+echo "$formatted"
