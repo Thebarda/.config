@@ -19,7 +19,7 @@ end)
 o.launch_on_start(programs.polkit_agent)
 
 o.launch_on_start(programs.notification_daemon)
-o.launch_on_start(programs.bar)
+-- o.launch_on_start(programs.bar)
 o.launch_on_start(programs.wallpaper_daemon)
 o.launch_on_start(programs.idle_daemon)
 

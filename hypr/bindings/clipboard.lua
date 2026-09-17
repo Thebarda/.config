@@ -53,3 +53,5 @@ o.bind("SUPER + X", "Universal cut", send_shortcut_once("CTRL", "X"))
 
 -- Needs cliphist, wl-clipboard, and a launcher with a list mode.
 o.bind("SUPER + CTRL + V", "Clipboard history", programs.clipboard_history)
+
+hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))

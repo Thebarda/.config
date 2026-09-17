@@ -35,8 +35,8 @@ o.window("([fF]irefox|zen|librewolf)", { tag = "+firefox-based-browser" })
 
 -- Only dim the browser when it's unfocused; reading a page through a
 -- translucent window is miserable.
-o.window({ tag = "chromium-based-browser" }, { tag = "-default-opacity", tile = true, opacity = "1.0 0.985" })
-o.window({ tag = "firefox-based-browser" }, { tag = "-default-opacity", opacity = "1.0 0.985" })
+o.window({ tag = "chromium-based-browser" }, { tag = "-default-opacity", tile = true, opacity = "1 1" })
+o.window({ tag = "firefox-based-browser" }, { tag = "-default-opacity", opacity = "1 1" })
 
 -- Video calls and video sites: fully opaque.
 o.window("(^.+-youtube\\.com__.*$|^.+-app\\.zoom\\.us__wc_home.*$)", { tag = "-chromium-based-browser" })
@@ -132,7 +132,7 @@ hl.layer_rule({ match = { namespace = "^(waybar|gtk-layer-shell)$" }, no_anim = 
 -- Opacity --------------------------------------------------------------------
 
 -- Applied last, to whatever still carries the tag: focused, then unfocused.
-o.window({ tag = "default-opacity" }, { opacity = "0.985 0.96" })
+o.window({ tag = "default-opacity" }, { opacity = "1 1" })
 
 -- Terminal backdrops are busier than a plain app window, so they get less.
-o.window({ tag = "terminal" }, { opacity = "0.99 0.985" })
+o.window({ tag = "terminal" }, { opacity = "1 1" })
